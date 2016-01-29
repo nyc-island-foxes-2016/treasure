@@ -1,3 +1,7 @@
 <h2>Create a new item listing</h2>
 
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <%= render 'form' %>
