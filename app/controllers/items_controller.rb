@@ -11,11 +11,15 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user = current_user
     if @item.save
-      redirect_to item_path
+      redirect_to item_path(@item)
     else
       flash[:notice] = "We could not save your treasure. Try again, matey!"
       redirect_to new_item_path
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
