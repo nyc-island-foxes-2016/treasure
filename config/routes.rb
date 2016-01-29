@@ -2,6 +2,15 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  root to: 'items#index'
+  resources :sessions, only: [:new, :create, :destroy]
+  delete 'session' => 'sessions#destroy'
+
+  get '/auth/:provider/callback', to: 'sessions#oauth_create'
+
+  resources :users, only: [:new, :create, :show]
+  resources :items, only: [:index]
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
