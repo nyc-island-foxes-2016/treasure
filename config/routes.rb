@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#oauth_create'
 
   resources :users, only: [:new, :create, :show]
-  resources :items, only: [:index, :new, :create]
+  resources :items, only: [:index, :new, :create, :show]
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
