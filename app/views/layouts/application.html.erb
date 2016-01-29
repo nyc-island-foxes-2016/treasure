@@ -7,6 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="container-nav">
+    <%= link_to 'Treasure', root_path %>
+    <nav>
+      <% if current_user = User.find_by(id: session[:user_id]) %>
+        <%= link_to current_user.name, current_user %>
+        <%= link_to 'logout', '/session', method: 'delete' %>
+      <% else %>
+        <%= link_to 'login', new_session_path, id: 'login-link' %>  
+        <%= link_to 'register', new_user_path, id: 'register-link' %> 
+      <% end %>
+      <%= render 'sessions/form' %>
+      <%= render 'users/form' %>
+    </nav>
+  </header>
 
 <%= yield %>
 
