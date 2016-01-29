@@ -20,10 +20,13 @@ class SessionsController < ApplicationController
   end
 
   def oauth_create
-    u = User.create_or_get_from_oauth(request.env['omniauth.auth'])
-    if u
+    @user = User.create_or_get_from_oauth(request.env['omniauth.auth'])
+    if @user
       flash[:notice] = 'Login successful'
+      session[:user_id] = @user.id
       redirect_to root_path
+    else
+      render :new
     end
   end
 
