@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
       u = User.new(provider: hash[:provider], uid: hash[:uid])
       u.password = SecureRandom.hex(32)
       u.email = hash[:info][:email]
-      u.username = hash[:info][:name]
+      u.name = hash[:info][:name]
       u.save
       return u
     end
