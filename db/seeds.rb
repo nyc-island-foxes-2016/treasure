@@ -36,34 +36,34 @@ shirt = Item.create!(name:"Fluorescent shirt", description: "bright yellow shirt
 computer = Item.create!(name:"Teacher's computer", description: "i love tech", user: steven)
 
 #Matches
-s1 = Swipe.create!(owned_item: chanel, judged_item: nexus, direction:"R")
-s2 = Swipe.create!(owned_item: nexus, judged_item: chanel, direction:"R")
-s7 = Swipe.create!(owned_item: book, judged_item: phish_album, direction:"R")
-s8 = Swipe.create!(owned_item: phish_album, judged_item: book, direction:"R")
-s14 = Swipe.create!(owned_item: chanel, judged_item: book, direction:"R")
-s15 = Swipe.create!(owned_item: book, judged_item: chanel, direction:"R")
-s18 = Swipe.create!(owned_item: nexus, judged_item: cookies, direction:"R")
-s19 = Swipe.create!(owned_item: cookies, judged_item: nexus, direction:"R")
+s1 = Swipe.create!(my_item: chanel, other_item: nexus, direction:"R")
+s2 = Swipe.create!(my_item: nexus, other_item: chanel, direction:"R")
+s7 = Swipe.create!(my_item: book, other_item: phish_album, direction:"R")
+s8 = Swipe.create!(my_item: phish_album, other_item: book, direction:"R")
+s14 = Swipe.create!(my_item: chanel, other_item: book, direction:"R")
+s15 = Swipe.create!(my_item: book, other_item: chanel, direction:"R")
+s18 = Swipe.create!(my_item: nexus, other_item: cookies, direction:"R")
+s19 = Swipe.create!(my_item: cookies, other_item: nexus, direction:"R")
 
 #Opposing
-s3 = Swipe.create!(owned_item: chair, judged_item: handbag, direction:"L")
-s4 = Swipe.create!(owned_item: handbag, judged_item: chair, direction:"R")
-s9 = Swipe.create!(owned_item: cookies, judged_item: headphones, direction:"R")
-s10 = Swipe.create!(owned_item: headphones, judged_item: cookies, direction:"L")
-s11 = Swipe.create!(owned_item: computer, judged_item: shirt, direction:"L")
-s12 = Swipe.create!(owned_item: shirt, judged_item: computer, direction:"R")
+s3 = Swipe.create!(my_item: chair, other_item: handbag, direction:"L")
+s4 = Swipe.create!(my_item: handbag, other_item: chair, direction:"R")
+s9 = Swipe.create!(my_item: cookies, other_item: headphones, direction:"R")
+s10 = Swipe.create!(my_item: headphones, other_item: cookies, direction:"L")
+s11 = Swipe.create!(my_item: computer, other_item: shirt, direction:"L")
+s12 = Swipe.create!(my_item: shirt, other_item: computer, direction:"R")
 
 #Both Left
-s5 = Swipe.create!(owned_item: piano, judged_item: scarf, direction:"L")
-s6 = Swipe.create!(owned_item: scarf, judged_item: piano, direction:"L")
+s5 = Swipe.create!(my_item: piano, other_item: scarf, direction:"L")
+s6 = Swipe.create!(my_item: scarf, other_item: piano, direction:"L")
 
 #Unrequited
-s13 = Swipe.create!(owned_item: chanel, judged_item: piano, direction:"R")
-s16 = Swipe.create!(owned_item: nexus, judged_item: shirt, direction:"L")
-s17 = Swipe.create!(owned_item: nexus, judged_item: headphones, direction:"L")
+s13 = Swipe.create!(my_item: chanel, other_item: piano, direction:"R")
+s16 = Swipe.create!(my_item: nexus, other_item: shirt, direction:"L")
+s17 = Swipe.create!(my_item: nexus, other_item: headphones, direction:"L")
 
 # Example match to be used for message seeds
-n_d_match = Match.where(swipe1_id: s1.id).where(swipe2_id: s2.id).first
+n_d_match = Match.where(given_swipe_id: s1.id).where(received_swipe_id: s2.id).first
 
 m1 = Message.create!(user: nicola, content: "Let's meet to trade", match: n_d_match)
 m2 = Message.create!(user: darius, content: "Ok, where?", match: n_d_match)
