@@ -1,11 +1,23 @@
 class Swipe < ActiveRecord::Base
-  validates :owned_item_id, presence: true
-  validates :judged_item_id, presence: true
+  validates :my_item, presence: true
+  validates :other_item, presence: true
   validates :direction, presence: true
 
-  belongs_to :owned_item, foreign_key: :owned_item_id, class_name: "Item"
-  belongs_to :judged_item, foreign_key: :judged_item_id, class_name: "Item"
-  has_many :first_match_swipes, foreign_key: :swipe1_id, class_name: "Match"
-  has_many :second_match_swipes, foreign_key: :swipe2_id, class_name: "Match"
+  belongs_to :my_item, foreign_key: :my_item_id, class_name: "Item"
+  belongs_to :other_item, foreign_key: :other_item_id, class_name: "Item"
+
+  #Necessary only for other associations
+  has_many :given_swipe_matches, foreign_key: :given_swipe_id, class_name: "Match"
+  has_many :received_swipe_matches, foreign_key: :received_swipe_id, class_name: "Match"
+
+  after_save :make_match
+
+  def make_match
+    return unless direction == "R"
+    #Find if another 'swipe right' exists with same two items
+    first_swipe = Swipe.find_by(other_item: self.my_item, my_item: self.other_item, direction: "R")
+    Match.create!(given_swipe: first_swipe, received_swipe: self) if first_swipe
+
+  end
 
 end
