@@ -9,9 +9,4 @@ class Item < ActiveRecord::Base
   has_many    :proposed_swipe_matches, through: :given_swipes
   has_many    :accepted_swipe_matches, through: :received_swipes
 
-  #TODO: Write method to merge first and second matches
-  # def matches
-  #   self.first_matches.merge(self.second_matches)
-  # end
-
 end
