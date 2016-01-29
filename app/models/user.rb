@@ -11,6 +11,5 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :given_swipes, through: :items
   has_many :received_swipes, through: :items
-  has_many :matches, through: :swipes #TODO: verify
   has_many :messages
 end
