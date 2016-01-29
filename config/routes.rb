@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete 'session' => 'sessions#destroy'
 
   get '/auth/:provider/callback', to: 'sessions#oauth_create'
+  get '/available_items', to: 'items#available_items_show'
 
   resources :users, only: [:new, :create, :show]
   resources :items, only: [:index, :new, :create, :show]

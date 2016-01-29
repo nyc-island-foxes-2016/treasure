@@ -22,6 +22,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def available_items_show
+    available_items = Item.available(current_user)
+    @item = available_items.shuffle.sample
+  end
+
   private
 
   def item_params
