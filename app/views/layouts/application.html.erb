@@ -47,7 +47,7 @@
             <li><%= link_to 'My Matches', root_path %> </li>
             <li><%= link_to 'Logout', session_path(current_user), method: :delete %> </li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">My Profile</a></li>
+            <li><%= link_to current_user.name, current_user %></li>
           </ul>
         </li>
 
