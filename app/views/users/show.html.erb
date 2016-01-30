@@ -9,5 +9,6 @@
       <%= item.name %> - <%= item.description %>
     <% end %>
     </p>
+    <%= button_to "Edit my profile", user_path(@user), method: :patch %>
   </div><!-- /.col-lg-4 -->
 </div>

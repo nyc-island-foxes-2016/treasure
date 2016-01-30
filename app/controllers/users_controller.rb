@@ -20,8 +20,13 @@ class UsersController < ApplicationController
     else
       render :new
     end
-
   end
+
+    def update
+      @user = User.find_by(id: params[:id])
+      render :edit
+    end
+
 
   private
 
