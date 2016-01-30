@@ -7,6 +7,7 @@ class SwipesController < ApplicationController
     else
       flash[:notice] = "Something went wrong. Sorry!"
       redirect_to available_items_path
+      #TODO: figure out where to redirect_to or what to render
     end
   end
 
