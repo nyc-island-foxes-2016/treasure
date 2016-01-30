@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :matches, only: [:index, :show]
   end
 
-  resources :users, only: [:new, :create, :show, :update]
+  resources :users, only: [:new, :create, :show, :edit, :update]
 
   resources :swipes, only: [:create]
 
