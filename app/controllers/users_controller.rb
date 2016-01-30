@@ -2,7 +2,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @items = @user.items
+    if @user && @user == current_user
+      @items = @user.items
+    else
+      render :file => "#{Rails.root}/public/404.html",  :status => 404
+    end
   end
 
   def new
