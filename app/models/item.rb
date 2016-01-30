@@ -24,7 +24,6 @@ class Item < ActiveRecord::Base
      " (       select s.other_item_id from swipes s join items i on i.id = s.my_item_id " +
      "  where i.user_id = ? ) "
    where(where_clause, user.id, user.id)
-
   end
 
 end
