@@ -38,6 +38,22 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find_by(id: params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(item_params)
+      flash[:notice] = "Item updated"
+      redirect_to @item
+    else
+      flash[:alert] = "Did not update"
+      render :edit
+    end
+  end
+
+
   private
 
   def item_params
