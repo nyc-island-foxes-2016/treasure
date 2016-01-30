@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @matches = @item.all_matches
   end
 
   def available_items_show

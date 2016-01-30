@@ -15,7 +15,11 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:new, :create, :show]
-  resources :items, only: [:index, :new, :create, :show]
+
+  resources :items, only: [:index, :new, :create, :show] do
+    resources :matches, only: [:index, :show]
+  end
+
   resources :swipes, only: [:create]
 
   # You can have the root of your site routed with "root"

@@ -1,0 +1,11 @@
+<h1><%= @item.name %> MATCHES</h1>
+<ol>
+<% @matches.each do |match | %>
+  <li>
+    <ul>
+      <li>Given_swipe Id: <%= match.given_swipe_id %></li>
+      <li>Received_swipe Id: <%= match.received_swipe_id %></li>
+    </ul>
+  </li>
+<% end %>
+</ol>
