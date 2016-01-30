@@ -8,10 +8,5 @@
     <% end %>
     <%= link_to "Edit my profile", edit_user_path %>
 
-    <h3>My Item</h3>
-    <p><% @items.each do |item| %>
-      <%= link_to item.name, item_path(item) %> - <%= item.description %>
-    <% end %>
-    </p>
   </div><!-- /.col-lg-4 -->
 </div>

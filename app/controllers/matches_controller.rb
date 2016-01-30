@@ -1,8 +1,7 @@
 class MatchesController < ApplicationController
 
   def show
-    # @item = Item.find(params[:item_id])
-    # @match = Match.find(params[:id])
+  	@match = Match.find_by(id: params[:id])
     # binding.pry
   end
 end
