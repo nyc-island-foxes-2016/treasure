@@ -35,7 +35,6 @@ class ItemsController < ApplicationController
         @item = available_items.shuffle.sample
       else
         flash[:notice] = "You're out of swipes for the day. Check back tomorrow!"
-        redirect_to root_path
       end
     else
       redirect_to login_path
