@@ -11,5 +11,5 @@
 <%= form_for @swipe do |f| %>
   <%= f.hidden_field :direction, :value => "R" %>
   <%= f.hidden_field :other_item_id, :value => @item.id %>
-  <%= f.submit "Swipe left" %>
+  <%= f.submit "Swipe right" %>
 <% end %>
