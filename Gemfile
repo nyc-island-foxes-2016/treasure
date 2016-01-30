@@ -43,6 +43,7 @@ group :development, :test do
  	gem 'factory_girl_rails'
  	gem 'pry-rails'
  	gem 'pry-nav'
+  gem 'better_errors'
 end
 
 group :development do
