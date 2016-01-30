@@ -1,5 +1,6 @@
+<% if item.avatar %>
+  <img src="<%= item.avatar.url %>" alt="<%= item.name %>">
+<% end %>
 
-<li> <%= item.name %> </li>
-<ul>
-  <li> <%= item.description %> </li>
-</ul>
+<h3><%= item.name %></h3>
+<p><%= item.description %></p>

@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
 
 
-  resources :users, only: [:new, :create, :show]
-
   resources :items, only: [:index, :new, :create, :show] do
     resources :matches, only: [:index, :show]
   end
+
+  resources :users, only: [:new, :create, :show, :edit, :update]
 
   resources :swipes, only: [:create]
 
