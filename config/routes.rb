@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   delete 'session' => 'sessions#destroy'
 
   get '/auth/:provider/callback', to: 'sessions#oauth_create'
+  get '/available_items', to: 'items#available_items_show'
 
   resources :users, only: [:new, :create, :show]
   resources :items, only: [:index, :new, :create, :show]
+  resources :swipes, only: [:create]
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
