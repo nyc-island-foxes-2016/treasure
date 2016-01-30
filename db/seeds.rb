@@ -45,6 +45,11 @@ s15 = Swipe.create!(my_item: book, other_item: chanel, direction:"R")
 s18 = Swipe.create!(my_item: nexus, other_item: cookies, direction:"R")
 s19 = Swipe.create!(my_item: cookies, other_item: nexus, direction:"R")
 
+match1 = Match.create!(given_swipe: s1, received_swipe: s2)
+match2 = Match.create!(given_swipe: s7, received_swipe: s8)
+match3 = Match.create!(given_swipe: s14, received_swipe: s15)
+match4 = Match.create!(given_swipe: s18, received_swipe: s19)
+
 #Opposing
 s3 = Swipe.create!(my_item: chair, other_item: handbag, direction:"L")
 s4 = Swipe.create!(my_item: handbag, other_item: chair, direction:"R")
