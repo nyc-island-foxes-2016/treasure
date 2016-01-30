@@ -1,5 +1,9 @@
 <h2>Login</h2>
 
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
 <%= render 'form', locals: {user: @user} %>
 
 <a href="/auth/facebook">Login or Register with Facebook</a>

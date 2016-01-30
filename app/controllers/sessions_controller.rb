@@ -7,15 +7,16 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:email], provider: 'SELF')
+    @user = User.find_by(email: params[:email])
     if @user and @user.authenticate params[:password]
       session[:user_id] = @user.id
       respond_to do |format|
         format.json {render json: @user}
-        format.html {redirect_to root_path}
+        format.html {redirect_to @user}
       end
     else
-      render :new
+      flash[:alert] = "Incorrect email or password"
+      redirect_to login_path
     end
   end
 
