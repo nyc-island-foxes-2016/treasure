@@ -3,6 +3,10 @@ class SwipesController < ApplicationController
     @swipe = Swipe.new(swipe_params)
     @swipe.my_item = current_user.items.first
     if @swipe.save
+      if @swipe.make_match
+
+        binding.pry
+      end
       redirect_to available_items_path
     else
       flash[:notice] = "Something went wrong. Sorry!"
