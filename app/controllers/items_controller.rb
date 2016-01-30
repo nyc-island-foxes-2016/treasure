@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def available_items_show
+    @swipe = Swipe.new
     available_items = Item.available(current_user)
     @item = available_items.shuffle.sample
   end

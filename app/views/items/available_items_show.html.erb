@@ -1,3 +1,9 @@
 <h3>Do you likey?</h3>
 
 <%= render @item %>
+
+<%= form_for @swipe do |f| %>
+  <%= f.hidden_field :direction, :value => "L" %>
+  <%= f.hidden_field :other_item_id, :value => @item.id %>
+  <%= f.submit "Swipe left" %>
+<% end %>
