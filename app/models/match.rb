@@ -12,4 +12,12 @@ class Match < ActiveRecord::Base
   alias item_1 my_item
   alias item_2 other_item
 
+  def other(item)
+    if item == self.item_1
+      return self.item_2
+     else
+      return self.item_1
+    end
+  end
+
 end

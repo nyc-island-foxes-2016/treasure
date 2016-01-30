@@ -1,10 +1,9 @@
 <h1><%= @item.name %> matches</h1>
 <ol>
-<% @matches.each do |match | %>
+<% @matches.each do |match| %>
   <li>
     <ul>
-      <li>Item 1: <%= match.item_1.name %></li>
-      <li>Item 2: <%= match.item_2.name %></li>
+      <%= link_to match.other(@item).name, match.other(@item) %>
     </ul>
   </li>
 <% end %>
