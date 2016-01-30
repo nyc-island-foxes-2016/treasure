@@ -11,6 +11,9 @@ class Item < ActiveRecord::Base
   has_many    :given_swipe_matches, through: :given_swipes
   has_many    :received_swipe_matches, through: :received_swipes
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   def all_matches
      ids = given_swipe_matches.pluck(:id) + received_swipe_matches.pluck(:id)
      Match.where(id: ids)
