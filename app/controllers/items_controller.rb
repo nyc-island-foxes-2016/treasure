@@ -23,13 +23,17 @@ class ItemsController < ApplicationController
   end
 
   def available_items_show
-    @swipe = Swipe.new
-    available_items = Item.available(current_user)
-    if !available_items.empty?
-      @item = available_items.shuffle.sample
+    if current_user
+      @swipe = Swipe.new
+      available_items = Item.available(current_user)
+      if !available_items.empty?
+        @item = available_items.shuffle.sample
+      else
+        flash[:notice] = "You're out of swipes for the day. Check back tomorrow!"
+        redirect_to root_path
+      end
     else
-      flash[:notice] = "You're out of swipes for the day. Check back tomorrow!"
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 
