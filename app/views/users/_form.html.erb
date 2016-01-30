@@ -29,10 +29,14 @@
       <%= f.password_field :password, class: 'form-control' %>
     </div>
   </div>
-  <div class="field form-group">
+
+
+
+
+  <div class="form-group">
     <%= f.label :avatar, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.file_field :avatar, class: 'form-control' %>
+      <%= f.file_field :avatar, id: 'exampleInputFile' %>
     </div>
   </div>
   <div class="actions form-group">
