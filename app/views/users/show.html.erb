@@ -2,13 +2,16 @@
   <div class="col-lg-4">
     <h2><%= @user.name %></h2>
     <% if @user.avatar %>
-      <img class="img-circle" src="<%= @user.avatar.url %>" alt="<%= @user.name %> profile picture" width="140" height="140">
+      <div>
+        <img class="img-circle" src="<%= @user.avatar.url %>" alt="<%= @user.name %> profile picture" width="140" height="140">
+      </div>
     <% end %>
-    <h4>My Item</h4>
-    <p><% @user.items.each do |item| %>
-      <%= item.name %> - <%= item.description %>
+    <%= link_to "Edit my profile", edit_user_path %>
+
+    <h3>My Item</h3>
+    <p><% @items.each do |item| %>
+      <%= link_to item.name, item_path(item) %> - <%= item.description %>
     <% end %>
     </p>
-    <%= link_to "Edit my profile", edit_user_path %>
   </div><!-- /.col-lg-4 -->
 </div>

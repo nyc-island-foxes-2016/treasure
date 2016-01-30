@@ -1,4 +1,4 @@
-<%= form_for(@item, url: items_path, html: {class: 'form-horizontal', multipart: true}) do |f| %>
+<%= form_for(@item, html: {class: 'form-horizontal', multipart: true}) do |f| %>
 
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -31,7 +31,7 @@
   </div>
   <div class="actions form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit  "Create my TREASURE listing" %>
+      <%= f.submit %>
     </div>
   </div>
 

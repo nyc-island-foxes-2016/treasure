@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @items = @user.items
   end
 
   def new
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       respond_to do |format|
         format.json {render json: @user}
-        format.html {redirect_to @user}
+        format.html {redirect_to new_item_path}
       end
     else
       render :new
