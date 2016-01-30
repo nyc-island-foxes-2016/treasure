@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all #last(10) matches made ?
+    @items = Item.all
   end
 
   def new
@@ -25,7 +25,12 @@ class ItemsController < ApplicationController
   def available_items_show
     @swipe = Swipe.new
     available_items = Item.available(current_user)
-    @item = available_items.shuffle.sample
+    if !available_items.empty?
+      @item = available_items.shuffle.sample
+    else
+      flash[:notice] = "You're out of swipes for the day. Check back tomorrow!"
+      redirect_to root_path
+    end
   end
 
   private
