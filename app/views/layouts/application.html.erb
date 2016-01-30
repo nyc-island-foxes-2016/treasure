@@ -6,20 +6,24 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<header class="container-nav">
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <%= link_to 'Treasure', root_path %>
-    </div>
-  </div>
-</nav>
-
-    
-</header>
-
-<%= yield %>
-
-</body>
+  <body class="container">
+    <header class="container-nav">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <%= link_to 'Treasure', root_path %>
+            <% if current_user %>
+            <%= link_to 'My Item', register_path %>
+            <%= link_to 'Logout', session_path, action: "delete" %>
+            <% else %>
+            <%= link_to 'Login', login_path %>
+            <%= link_to 'Register', register_path %>
+            <%= link_to 'List An Item', new_item_path %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <%= yield %>
+  </body>
 </html>
