@@ -6,7 +6,9 @@
 <h4><%= message.user.name %></h4>
 <%= message.content %>
 <% end %>
-
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
 
     <%= form_for @message, url: item_match_messages_path(@my_item, @match) do |f| %>
       <%= f.label 'Send text:' %>
