@@ -5,6 +5,7 @@ class SwipesController < ApplicationController
     @swipe.my_item = current_user.items.first
     if @swipe.save
       if @swipe.make_match
+        flash[:notice] = "You matched with #{@swipe.other_item.name}. Go to My Item to start a message with them."
       end
       redirect_to available_items_path
     else
