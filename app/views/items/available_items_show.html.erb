@@ -1,29 +1,33 @@
-<h3>Do you likey?</h3>
-<% if flash[:notice] %>
-  <div class="match-flash-notice">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-
-<% if @item %>
-  <%= render @item %>
-
-  <%= form_for @swipe do |f| %>
-    <%= f.hidden_field :direction, :value => "L" %>
-    <%= f.hidden_field :other_item_id, :value => @item.id %>
-    <%= f.submit "Swipe left" %>
-  <% end %>
-
-  <%= form_for @swipe do |f| %>
-    <%= f.hidden_field :direction, :value => "R" %>
-    <%= f.hidden_field :other_item_id, :value => @item.id %>
-    <%= f.submit "Swipe right" %>
-  <% end %>
-
-<% else %>
-
+<div class="jumbotron">
+  <div>
   <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
+    <div class="match-flash-notice">
+      <%= flash[:notice] %>
+    </div>
   <% end %>
 
-<% end %>
+  <% if @item %>
+    <%= render @item %>
+
+    <%= form_for @swipe do |f| %>
+      <%= f.hidden_field :direction, :value => "L" %>
+      <%= f.hidden_field :other_item_id, :value => @item.id %>
+      <%= f.submit "swipe left",  class: "btn btn-danger pull-left"%>
+    <% end %>
+
+    <%= form_for @swipe do |f| %>
+      <%= f.hidden_field :direction, :value => "R" %>
+      <%= f.hidden_field :other_item_id, :value => @item.id %>
+      <%= f.submit "swipe right", class: "btn btn-success pull-right" %>
+    <% end %>
+
+
+  <% else %>
+
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+
+  <% end %>
+  </div>
+</div>
