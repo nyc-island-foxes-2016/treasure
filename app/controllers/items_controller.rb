@@ -20,7 +20,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    if @item && @item.user == current_user
+
+
+    if @item && (@item.user == current_user || current_user.is_a_matched_item?(@item))
       @matches = @item.all_matches
     else
       render :file => "#{Rails.root}/public/404.html",  :status => 404
@@ -35,7 +37,6 @@ class ItemsController < ApplicationController
         @item = available_items.shuffle.sample
       else
         flash[:notice] = "You're out of swipes for the day. Check back tomorrow!"
-        redirect_to root_path
       end
     else
       redirect_to login_path

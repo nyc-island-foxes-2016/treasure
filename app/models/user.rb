@@ -28,4 +28,14 @@ class User < ActiveRecord::Base
       return u
     end
   end
+
+  def is_a_matched_item?(item)
+    self.items.each do |my_item|
+      my_item.all_matches.each do |match|
+        return true if match.other(my_item) == item
+      end
+    end
+    return false
+  end
+
 end
