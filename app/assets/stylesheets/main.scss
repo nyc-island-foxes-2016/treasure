@@ -1,36 +1,33 @@
-body {
-
-}
-.chat {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.jumbotron div {
+  text-align: center;
 }
 
+.btn-group {
+    .btn {
+      display: block;
+  }
+}
+
 .chat {
+  .header {
+  text-align: left;
+  }
+  ul {
+  padding-left: 0px;
+  }
   li {
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 1px dotted #B3A9A9;
-    img {
-      padding: 7px;
+
+  p {
+    margin: 0;
+    color: #777777;
     }
-    .left{
-      .chat-body{
-        margin-left: 60px;
-      }
-    } 
-    .left{
-      .chat-body{
-        margin-right: 60px;
-      }
-      p {
-        margin: 0;
-        color: #777777;
-      }
-    } 
   }
 }
+
+
 
 .panel .slidedown .glyphicon, .chat .glyphicon
 {

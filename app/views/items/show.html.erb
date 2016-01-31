@@ -1,7 +1,8 @@
-<h2>Your item's profile</h2>
-
-<%= render @item %>
-
-<% if @has_matches %>
-  <%= render 'matches_list' %>
-<% end %>
+<div class="jumbotron">
+  <div>
+    <%= render @item %>
+    <% if @has_matches %>
+      <%= render 'matches_list' %>
+    <% end %>
+  </div>
+</div>
