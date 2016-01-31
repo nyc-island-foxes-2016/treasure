@@ -2,7 +2,14 @@
   <%=@match.created_at %>
 </h1>
 
-<% @messages.each do |message| %>
+<% @match.messages.each do |message| %>
 <h4><%= message.user.name %></h4>
 <%= message.content %>
 <% end %>
+
+
+    <%= form_for @message, url: item_match_messages_path(@my_item, @match) do |f| %>
+      <%= f.label 'Send text:' %>
+      <%= f.text_area(:content, size: "30x4") %>
+      <%= f.submit "text" %>
+    <% end %>
