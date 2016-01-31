@@ -1,0 +1,65 @@
+<h4>
+  <%= @my_item.name %> 's Match for <%= @other_item.name %>
+  
+</h4>
+<p>This match was created on: <%= std_format_date(@match.created_at) %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+
+      <div class="panel-body">
+        <ul class="chat">
+
+          <% @match.messages.each do |message| %>
+          
+          <% if current_user.name == message.user.name %>
+          <li class="left clearfix"><span class="chat-img pull-left">
+            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+          </span>
+          <div class="chat-body clearfix">
+            <div class="header">
+              <strong class="primary-font"><%= message.user.name %></strong> <small class="pull-right text-muted">
+              <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %></small>
+            </div>
+            <p><%= message.content %></p>
+          </div>
+        </li>
+        <% else %>
+        <li class="right clearfix"><span class="chat-img pull-right">
+          <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+        </span>
+        <div class="chat-body clearfix">
+          <div class="header">
+            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %></small>
+            <strong class="pull-right primary-font"><%= message.user.name %></strong>
+          </div>
+          <p>
+            <%= message.content %>
+          </p>
+        </div>
+      </li>
+      <% end %>
+      <% end %>
+
+      <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+      <% end %>
+
+      <div class="panel-footer">
+        <%= form_for @message, url: item_match_messages_path(@my_item, @match), class: "form-horizontal", id: 'login-form' do |f| %>
+
+        <div class="input-group">
+          <%= f.text_area :content, class: 'form-control input-sm', id:"btn-input" %>
+          <span class="input-group-btn">
+            <button class="btn btn-warning btn-sm" id="btn-chat">
+              <%= f.submit "text", class:"btn btn-warning btn-sm", id:"btn-chat" %></button>
+            </span>
+          </div>
+
+          <% end %>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>
