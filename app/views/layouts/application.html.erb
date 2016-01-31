@@ -35,9 +35,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <% unless current_user.items %>
                   <li><%= link_to 'My Item', item_path(current_user.items.first) %> </li>
-                  <% end %>
                   <li><%= link_to "Settings", current_user %></li>
                   <li role="separator" class="divider"></li>
                   <li><%= link_to 'Logout', session_path(current_user), method: :delete %> </li>
