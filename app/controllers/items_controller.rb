@@ -19,12 +19,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    if @item && (@item.user == current_user || current_user.is_a_matched_item?(@item))
+    @item = Item.find_by(id: params[:id])
+    if @item && @item.user == current_user
       @matches = @item.all_matches
       @has_matches = !@matches.empty?
     else
-      render :file => "#{Rails.root}/public/404.html",  :status => 404
+      render :file => "#{Rails.root}/public/404.html", :status => 404
     end
   end
 
@@ -44,10 +44,13 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find_by(id: params[:id])
+    if !@item
+      render :file => "#{Rails.root}/public/404.html", :status => 404
+    end
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id])
     if @item.update_attributes(item_params)
       flash[:notice] = "Item updated"
       redirect_to @item
