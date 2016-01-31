@@ -1,10 +1,7 @@
-<h1><%= @item.name %> matches</h1>
-<ol>
-<% @matches.each do |match| %>
-  <li>
-    <ul>
-      <%= link_to match.other(@item).name, match.other(@item) %>
-    </ul>
-  </li>
+<h3>Matches:</h3>
+
+<% if !@matches.empty? %>
+  <%= render @matches %>
+<% else %>
+  <p>No matches yet!</p>
 <% end %>
-</ol>
