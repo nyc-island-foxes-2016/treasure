@@ -1,7 +1,9 @@
 <h4>
   <%= @my_item.name %>'s Match for <%= @other_item.name %>
-
 </h4>
+
+<%= render @other_item %>
+
 <p>This match was created on: <%= std_format_date(@match.created_at) %></p>
 
 <div class="container">
