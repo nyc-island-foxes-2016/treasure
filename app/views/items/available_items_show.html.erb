@@ -1,4 +1,9 @@
 <h3>Do you likey?</h3>
+<% if flash[:notice] %>
+  <div class="match-flash-notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
 <%= render @item %>
 
