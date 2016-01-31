@@ -7,11 +7,11 @@
 <%= message.content %>
 <% end %>
 <% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
+<div class="alert"><%= flash[:alert] %></div>
 <% end %>
 
-    <%= form_for @message, url: item_match_messages_path(@my_item, @match) do |f| %>
-      <%= f.label 'Send text:' %>
-      <%= f.text_area(:content, size: "30x4") %>
-      <%= f.submit "text" %>
-    <% end %>
+<%= form_for @message, url: item_match_messages_path(@my_item, @match) do |f| %>
+  <%= f.label 'Send text:' %>
+  <%= f.text_area(:content, size: "30x4") %>
+  <%= f.submit "text" %>
+<% end %>
