@@ -1,8 +1,11 @@
-<h3>Welcome to Treasure.<h3>
-  <h4>Here's how it works:</h4>
-  <p>List an object you want to trade.</p>
-  <p>Swipe right on an object if you'd be willing to trade your object for it.</p>
-  <p>Swipe left if not.</p>
-  <p>Keep swiping until you get a match!</p>
+<p>List an item and swipe on other items if you'd be willing to trade!</p>
+<ul>
+  <li><%= link_to "Sign Up with Email", register_path %></li>
+  <li><a href="/auth/facebook">Sign up with Facebook</a></li>
+</ul>
 
-  <%= link_to "Start Swiping", "/available_items" %>
+Already have an account?
+<ul>
+  <li><%= link_to "Login with Email", login_path %></li>
+  <li><a href="/auth/facebook">Login with Facebook</a></li>
+</ul>
