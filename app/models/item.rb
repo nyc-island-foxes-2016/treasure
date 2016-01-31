@@ -14,6 +14,8 @@ class Item < ActiveRecord::Base
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
+  before_save :add_default_image
+
   def all_matches
      ids = given_swipe_matches.pluck(:id) + received_swipe_matches.pluck(:id)
      Match.where(id: ids)
@@ -24,6 +26,10 @@ class Item < ActiveRecord::Base
      " (       select s.other_item_id from swipes s join items i on i.id = s.my_item_id " +
      "  where i.user_id = ? ) "
    where(where_clause, user.id, user.id)
+  end
+
+  def add_default_image
+    self.avatar_file_name = 'https://placehold.it/300.png/09f/fff'
   end
 
 end

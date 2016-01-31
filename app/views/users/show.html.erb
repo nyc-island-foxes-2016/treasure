@@ -1,12 +1,13 @@
 <div class="row">
   <div class="col-lg-4">
-    <h2><%= @user.name %></h2>
     <% if @user.avatar %>
       <div>
-        <img class="img-circle" src="<%= @user.avatar.url %>" alt="<%= @user.name %> profile picture" width="140" height="140">
+        <img class="img-circle" src="<%= @user.avatar_file_name %>" alt="<%= @user.name %> profile picture" width="140" height="140">
       </div>
     <% end %>
-    <%= link_to "Edit my profile", edit_user_path %>
+    <h2><%= @user.name %></h2>
+    <p> <%= link_to "Edit my profile", edit_user_path %></p>
+
 
   </div><!-- /.col-lg-4 -->
 </div>

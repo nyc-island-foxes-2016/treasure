@@ -69,11 +69,11 @@ s17 = Swipe.create!(my_item: nexus, other_item: headphones, direction:"L")
 
 # Example match to be used for message seeds
 
-# n_d_match = Match.where(given_swipe_id: s1.id).where(received_swipe_id: s2.id).first
+n_d_match = Match.where(given_swipe_id: s1.id).where(received_swipe_id: s2.id).first
 
-# m1 = Message.create!(user: nicola, content: "Let's meet to trade", match: n_d_match)
-# m2 = Message.create!(user: darius, content: "Ok, where?", match: n_d_match)
-# m3 = Message.create!(user: nicola, content: "Let's go to Ulysses", match: n_d_match)
-# m4 = Message.create!(user: darius, content: "Sweet I love bars.", match: n_d_match)
+m1 = Message.create!(user: nicola, content: "Let's meet to trade", match: n_d_match)
+m2 = Message.create!(user: darius, content: "Ok, where?", match: n_d_match)
+m3 = Message.create!(user: nicola, content: "Let's go to Ulysses", match: n_d_match)
+m4 = Message.create!(user: darius, content: "Sweet I love bars.", match: n_d_match)
 
 
