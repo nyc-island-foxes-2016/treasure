@@ -1,23 +1,20 @@
 class MessagesController < ApplicationController
 
-  def new
-    @message = Message.new
-  end
-
   def create
     @message = Message.new(message_params)
+    @match = Match.find_by(id: params[:match_id])
     @message.user = current_user
-    if @message.save
-      redirect_to item_path(@message)
-    else
-      flash[:notice] = "We could not send your Message"
-      redirect_to new_message_path
-    end
-  end
+    @message.match = @match
+    @my_item = @match.my_item
+    @match.touch if @message.save
 
-  private
+    redirect_to item_match_path(@my_item, @match)
+  end
+    
+
+  private 
 
   def message_params
-    params.require(:message).permit(:match_id, :user_id, :content)
+    params.require(:message).permit(:content)
   end
 end
