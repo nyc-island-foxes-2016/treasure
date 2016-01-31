@@ -11,7 +11,7 @@
       <div class="panel-body">
         <ul class="chat">
 
-<% @match.messages.each do |message| %>
+          <% @match.messages.each do |message| %>
           
           <% if current_user.name == message.user.name %>
           <li class="left clearfix"><span class="chat-img pull-left">
@@ -39,36 +39,27 @@
           </p>
         </div>
       </li>
-    <% end %>
-  <% end %>
-
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-  <% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
-  <% end %>
-
-
-  <div class="panel-footer">
-    <%= form_for @message, url: item_match_messages_path(@my_item, @match), class: "form-horizontal", id: 'login-form' do |f| %>
-
-    <div class="input-group">
-      <%= f.text_area :content, class: 'form-control input-sm', id:"btn-input" %>
-      <span class="input-group-btn">
-        <button class="btn btn-warning btn-sm" id="btn-chat">
-          <%= f.submit "text", class:"btn btn-warning btn-sm", id:"btn-chat" %></button>
-        </span>
-      </div>
-
       <% end %>
+      <% end %>
+
+      <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+      <% end %>
+
+      <div class="panel-footer">
+        <%= form_for @message, url: item_match_messages_path(@my_item, @match), class: "form-horizontal", id: 'login-form' do |f| %>
+
+        <div class="input-group">
+          <%= f.text_area :content, class: 'form-control input-sm', id:"btn-input" %>
+          <span class="input-group-btn">
+            <button class="btn btn-warning btn-sm" id="btn-chat">
+              <%= f.submit "text", class:"btn btn-warning btn-sm", id:"btn-chat" %></button>
+            </span>
+          </div>
+
+          <% end %>
+        </div>
+      </div>
+    </ul>
+  </div>
 </div>
-   
