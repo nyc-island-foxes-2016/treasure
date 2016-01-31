@@ -1,3 +1,8 @@
 <h1>
   <%=@match.created_at %>
 </h1>
+
+<% @messages.each do |message| %>
+<h4><%= message.user.name %></h4>
+<%= message.content %>
+<% end %>
