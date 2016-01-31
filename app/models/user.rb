@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :received_swipes, through: :items
   has_many :messages
 
+  before_save :add_default_image
+
   def self.create_or_get_from_oauth(hash)
     existing = User.find_by(provider: hash[:provider], uid: hash[:uid])
     if existing
@@ -36,6 +38,10 @@ class User < ActiveRecord::Base
       end
     end
     return false
+  end
+
+  def add_default_image
+    self.avatar_file_name = 'http://www.carderator.com/assets/avatar_placeholder_small.png'
   end
 
 end
