@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       respond_to do |format|
         format.json {render json: @user}
-        format.html {redirect_to @user}
+        format.html {redirect_to '/available_items'}
       end
     else
       flash[:alert] = "Incorrect email or password"
