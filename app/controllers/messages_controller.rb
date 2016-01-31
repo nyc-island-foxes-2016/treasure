@@ -6,11 +6,14 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.match = @match
     @my_item = @match.my_item
-    @match.touch if @message.save
-
-    redirect_to item_match_path(@my_item, @match)
+    if @message.save
+      @match.touch 
+      redirect_to item_match_path(@my_item, @match)
+    else
+      flash[:notice] = "Sorry! We couldn't send you message, phone companies suck"
+      redirect_to item_match_path(@my_item, @match)
+    end
   end
-    
 
   private 
 
