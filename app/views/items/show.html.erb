@@ -2,4 +2,6 @@
 
 <%= render @item %>
 
-<%= render 'matches_list' %>
+<% if @has_matches %>
+  <%= render 'matches_list' %>
+<% end %>

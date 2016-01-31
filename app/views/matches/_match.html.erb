@@ -1,3 +1,1 @@
-<ul>
-  <%= link_to match.other(@item).name, match.other(@item) %>
-</ul>
+<%= link_to match.other(@item).name, item_match_path(@item, match) %>
