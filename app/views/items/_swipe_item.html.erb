@@ -1,0 +1,7 @@
+<div id="item-container">
+  <% if item.avatar %>
+    <img class="avatar" src="<%= item.avatar_file_name %>" alt="<%= item.name %>">
+  <% end %>
+  <h3><%= item.name %></h3>
+  <p><%= item.description %></p>
+</div>

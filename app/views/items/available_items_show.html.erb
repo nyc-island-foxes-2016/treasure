@@ -6,7 +6,7 @@
   <% end %>
 
   <% if @item %>
-    <%= render @item %>
+    <%= render partial: "swipe_item", locals: {item: @item} %>
 
     <%= form_for @swipe do |f| %>
       <%= f.hidden_field :direction, :value => "L" %>
@@ -20,7 +20,6 @@
       <%= f.submit "swipe right", class: "btn btn-success pull-right" %>
     <% end %>
 
-
   <% else %>
 
     <% if flash[:notice] %>
@@ -29,4 +28,3 @@
 
   <% end %>
 </div>
-
