@@ -12,6 +12,7 @@ $(document).ready(function(){
           console.log("YAY");
         }).fail(function(response){
           console.log("NAH");
+          console.log(response);
         });
     });
   };
