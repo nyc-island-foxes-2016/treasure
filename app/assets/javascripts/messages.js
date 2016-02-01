@@ -5,16 +5,19 @@ $(document).ready(function() {
     event.preventDefault();
     var form = this;
     var request_url = $(this).attr('action');
-    $.ajax({
+    var ajaxRequest = $.ajax({
       url: $(form).attr('action'),
       method: $(form).attr('method'),
-      data: $(form).serialize(),
-      dataType: 'json',
-    }).done(function(response){
-      $('#message').append('<br>' + response.content);
-      $("#ajax").css("display", "block");
-      $('#message').css("text-align", "left");
+      data: $(form).serialize()
+
+    })
+    ajaxRequest.done(function(response){
+      console.log(response);
+      $('#chat-sm').html(response);
     });
   });
 
 });
+
+
+
