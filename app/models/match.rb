@@ -20,7 +20,7 @@ class Match < ActiveRecord::Base
     end
   end
 
-  def make_swap_if_mutual_and_update_swapped_at(item)
+  def make_swap_if_mutual_swap(item)
     other_item = self.other(item)
     if other_item.swapped
       self.update_attributes(swapped_at: DateTime.now)
