@@ -1,12 +1,12 @@
 .move-right {
   transition: .6s;
-  margin-left: 75%;
+  margin-left: 20em;
   opacity: 0;
 }
 
 .move-left {
   transition: .6s;
-  margin-right: 75%;
+  margin-right: 20em;
   opacity: 0;
 }
 

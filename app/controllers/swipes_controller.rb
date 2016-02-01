@@ -1,13 +1,18 @@
 class SwipesController < ApplicationController
+      respond_to do |format|
+        format.json {render json: @swipe}
+        format.html {}
+      end
 
   def create
+    binding.pry
     @swipe = Swipe.new(swipe_params)
     @swipe.my_item = current_user.items.first
     if @swipe.save
       if @swipe.make_match
         flash[:notice] = "You matched with #{@swipe.other_item.name}. Go to My Item to start a message with them."
+        redirect_to available_items_path
       end
-      redirect_to available_items_path
     else
       flash[:notice] = "Something went wrong. Sorry!"
       redirect_to available_items_path
