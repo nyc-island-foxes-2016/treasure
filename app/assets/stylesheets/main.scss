@@ -1,5 +1,12 @@
-.jumbotron div {
+.main div {
   text-align: center;
+}
+
+.footer {
+  text-align: center;
+  padding: 1em;
+  margin-top: 1em;
+  background-color: #e7e7e7;
 }
 
 .btn-group {
@@ -9,35 +16,33 @@
 }
 
 .chat {
-  .header {
-  text-align: left;
-  }
-  ul {
-  padding-left: 0px;
-  }
-  li {
-    margin-bottom: 10px;
-    padding-bottom: 5px;
+  .chat-body {
     border-bottom: 1px dotted #B3A9A9;
+    }
+
+  .header {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 1em;
+  }
 
   p {
-    margin: 0;
+    padding-left: 1em;
+    list-style: none;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
     color: #777777;
-    }
   }
 }
 
+.panel {
+  margin: 0 auto;
+  border: 1px solid #777777;
+  width: 320px;
 
-
-.panel .slidedown .glyphicon, .chat .glyphicon
-{
-    margin-right: 5px;
-}
-
-.panel-body
-{
-    overflow-y: scroll;
-    height: 40em;
+    .slidedown .glyphicon, .chat .glyphicon {
+      margin: 0px 5px 0px 5px;
+    }
 }
 
 ::-webkit-scrollbar-track

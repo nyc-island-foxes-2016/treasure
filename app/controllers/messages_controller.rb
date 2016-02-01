@@ -7,15 +7,15 @@ class MessagesController < ApplicationController
     @message.match = @match
     @my_item = @match.my_item
     if @message.save
-      @match.touch 
+      @match.touch
       redirect_to item_match_path(@my_item, @match)
     else
-      flash[:notice] = "Sorry! We couldn't send you message, phone companies suck"
+      flash[:notice] = "Sorry! We couldn't send your message, phone companies suck"
       redirect_to item_match_path(@my_item, @match)
     end
   end
 
-  private 
+  private
 
   def message_params
     params.require(:message).permit(:content)
