@@ -2,8 +2,11 @@ $(document).ready(function(){
 
   $(document).on("keyup", function(event) {
     if(event.keyCode == 37) {
-      $('#item-container').addClass('rotate-right').delay(700).fadeOut();
-    }
+      $('#item-container').addClass('move-left');
+    } else if(event.keyCode == 39) {
+       $('#item-container').addClass('move-right').delay(700).fadeOut();
+
+    };
   });
 
 

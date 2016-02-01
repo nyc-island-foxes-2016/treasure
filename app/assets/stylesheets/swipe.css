@@ -1,15 +1,12 @@
-.rotate-left {
-  transform: rotate(30deg) scale(0.8);
-  transition: 1s;
-  margin-left: 400px;
-  cursor: e-resize;
+.move-right {
+  transition: .6s;
+  margin-left: 75%;
   opacity: 0;
 }
 
-.rotate-right {
-  transform: rotate(-30deg) scale(0.8);
-  transition: 1s;
+.move-left {
+  transition: .6s;
+  margin-right: 75%;
   opacity: 0;
-  margin-left: -400px;
-  cursor: w-resize;
 }
+
