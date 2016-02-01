@@ -55,7 +55,6 @@ class ItemsController < ApplicationController
       @item.update_attributes(swapped: true)
       @match = Match.find(params[:match])
       @match.make_swap_if_mutual_and_update_swapped_at(@item)
-      binding.pry
       if @match.swapped_at != nil
         flash[:notice] = "You swapped your treasure!"
       end

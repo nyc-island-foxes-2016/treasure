@@ -27,4 +27,12 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def item_belongs_to?(item)
+    if self.my_item == item || self.other_item == item
+      return true
+    else
+      false
+    end
+  end
+
 end
