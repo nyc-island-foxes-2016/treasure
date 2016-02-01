@@ -51,12 +51,22 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find_by(id: params[:id])
-    if @item.update_attributes(item_params)
-      flash[:notice] = "Item updated"
-      redirect_to @item
+    if !!params[:item][:swapped]
+      @item.update_attributes(swapped: true)
+      @match = Match.find(params[:match])
+      @match.make_swap_if_mutual_and_update_swapped_at(@item)
+      if @match.swapped_at != nil
+        flash[:notice] = "You swapped your treasure!"
+      end
+      redirect_to item_match_path(@item, @match)
     else
-      flash[:alert] = "Did not update"
-      render :edit
+      if @item.update_attributes(item_params)
+        flash[:notice] = "Item updated"
+        redirect_to @item
+      else
+        flash[:alert] = "Did not update"
+        render :edit
+      end
     end
   end
 
