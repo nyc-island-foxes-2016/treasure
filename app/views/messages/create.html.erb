@@ -1,0 +1,30 @@
+<div class="panel-heading">
+  <h3 class="panel-title">Conversation</h3>
+</div>
+<div class="chat" id="chat">
+  <% @all_messages.each do |message| %>
+    <% if current_user.name == message.user.name %>
+      <div class="chat-body clearfix">
+        <div class="header">
+          <strong class="primary-font"><%= message.user.name %></strong>
+            <small class="text-muted">
+              <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
+            </small>
+        </div>
+        <p class="pull-left"><%= message.content %></p>
+      </div>
+    <% else %>
+    <div class="chat-body clearfix">
+      <div class="header">
+        <strong class="primary-font"><%= message.user.name %></strong>
+          <small class=" text-muted">
+            <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
+          </small>
+      </div>
+      <p class="pull-left"><%= message.content %></p>
+    </div>
+  </li>
+  <% end %>
+<% end %>
+
+
