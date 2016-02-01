@@ -1,5 +1,6 @@
 <div class='available-items-container'>
 
+
   <% if @item %>
     <%= render partial: "swipe_item", locals: {item: @item} %>
 
@@ -33,4 +34,21 @@
     <% end %>
 
   <% end %>
+</div>
+
+<div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-content">
+          <h4 class="modal-title" id="myModalLabel">You Matched!</h4>
+            <img src="<%= @item.avatar_file_name %>" alt="<%= @item.name %>">
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
