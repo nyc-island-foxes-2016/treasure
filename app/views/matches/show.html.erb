@@ -1,7 +1,16 @@
 <h4><%= @my_item.name %> & <%= @other_item.name %></h4>
 <%= render @other_item %>
 
-<div class="container">
+  <%= form_for @my_item, method: "PATCH" do |f| %>
+    <%= f.hidden_field :swapped %>
+    <%= hidden_field_tag "match", "#{@match.id}" %>
+    <%= f.submit "Swap!"%>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+
   <div class="row">
     <div class="col-md-5">
 
