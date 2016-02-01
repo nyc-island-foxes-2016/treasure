@@ -17,7 +17,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">Conversation</h3>
     </div>
-    <div class="chat">
+    <div class="chat" id="chat">
       <% @match.messages.each do |message| %>
         <% if current_user.name == message.user.name %>
           <div class="chat-body clearfix">
@@ -42,6 +42,20 @@
       </li>
       <% end %>
     <% end %>
+
+
+         <div class="chat-body clearfix" id="ajax">
+            <div class="header">
+              <strong class="primary-font"><%= current_user.name %></strong>
+                <small class="text-muted">
+                  <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(DateTime.now) %>
+                </small>
+            </div>
+            <p class="pull-left" id="message"></p>
+          </div>
+
+
+
 
     <div class="panel-footer">
       <%= form_for @message, url: item_match_messages_path(@my_item, @match), class: "form-horizontal" do |f| %>
