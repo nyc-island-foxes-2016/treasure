@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     @match = Match.find_by(id: params[:match_id])
     @message.user = current_user
     @message.match = @match
-    @my_item = @match.my_item
+    @my_item = current_user.items.first
     if @message.save
       @match.touch
       redirect_to item_match_path(@my_item, @match)
