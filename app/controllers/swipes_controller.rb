@@ -6,9 +6,11 @@ class SwipesController < ApplicationController
     if @swipe.save
       @swipe.make_match
       @item = Item.available(current_user).shuffle.sample
-      respond_to do |format|
-        format.json { render json: @item }
-        format.html { redirect_to available_items_path }
+      if request.xhr?
+        respond_to do |format|
+          format.json { render json: {item: @item, match: @match } }
+          format.html { redirect_to available_items_path }
+        end
       end
     else
       flash[:notice] = "Something went wrong. Sorry!"

@@ -6,13 +6,14 @@ $(document).ready(function(){
     $.ajax({
           type: "POST",
           url: "/swipes",
-          dataType: "JSON",
-          data: $("#left-swipe").serialize()
+          data: $("#left-swipe").serialize(),
+          dataType: "JSON"
         }).done(function(response){
-          console.log("YAY");
+          //Changing hidden value for item id on left swipe form
+          $("#left-swipe input")[3].value = response.item.id
+          $('#item-container').html(buildSwipeItem(response.item));
         }).fail(function(response){
-          console.log("NAH");
-          console.log(response);
+          console.log("NAH", response);
         });
     });
   };
@@ -21,19 +22,35 @@ $(document).ready(function(){
 
   $(document).on("keyup", function(event) {
     if(event.keyCode == 37) {
-      $('#item-container').addClass('move-left');
-      // Ajax get request to replace item with next item
-     // Ajax post request to create swipe based on action
+      // $('#item-container').addClass('move-left');
 
+      event.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: "/swipes",
+        data: $("#left-swipe").serialize(),
+        dataType: "JSON"
+              }).done(function(response){
+        $("#left-swipe input")[3].value = response.item.id
+        $('#item-container').html(buildSwipeItem(response.item));
+        $('#item-container').removeClass('move-left');
+      }).fail(function(response){
+        console.log("NAH", response);
+      });
     } else if(event.keyCode == 39) {
        $('#item-container').addClass('move-right');
-
     };
   });
 
 
 
-
+function buildSwipeItem(item) {
+  return ["<div id='item-container'>",
+          "<img class='avatar' src='" + item.avatar_file_name + "' alt='" + item.name + "'>",
+          "<h3>" + item.name + "</h3>",
+          "<p>" + item.description + "</p>",
+          "</div>"].join("");
+  };
 });
 
 
