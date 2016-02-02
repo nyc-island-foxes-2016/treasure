@@ -1,19 +1,10 @@
-.main div {
-  text-align: center;
+.navbar-brand {
+  font-family: 'Patua One', cursive;
+  font-size: 2em;
 }
 
-.jumbotron {
-  ul {
-  list-style: none;
-  padding-left: 0px;
-  }
-}
-
-.footer {
-  text-align: center;
-  padding: 1em;
-  margin-top: 1em;
-  background-color: #e7e7e7;
+.navbar-brand, .navbar-default {
+  color: black;
 }
 
 .btn-group {
