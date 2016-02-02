@@ -114,8 +114,8 @@ $(document).ready(function(){
       }
     });
 
-function buildSwipeItem(item) {
-   return ["<div id='item-container'>",
+  function buildSwipeItem(item) {
+    return ["<div id='item-container'>",
           "<img class='avatar' src='" + item.avatar_file_name + "' alt='" + item.name + "'>",
           "<h3>" + item.name + "</h3>",
           "<p>" + item.description + "</p>",
