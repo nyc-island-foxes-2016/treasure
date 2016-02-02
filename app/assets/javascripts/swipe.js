@@ -26,7 +26,7 @@ $(document).ready(function(){
         }).then(function(event) {
           if (nextItemObject.message != "No More Items") {
             if (swipeDirection == "R") {
-              $( "#item-container" ).animate({ marginLeft: "15em", opacity: 0 },
+              $( "#item-container" ).animate({ marginLeft: "10em", opacity: 0 },
                       { duration: 400,
                       complete: function() {
                       $( "#item-container" ).remove();
@@ -34,7 +34,7 @@ $(document).ready(function(){
                     }
                   });
             } else if (swipeDirection == "L") {
-              $( "#item-container" ).animate({ marginRight: "15em", opacity: 0 },
+              $( "#item-container" ).animate({ marginRight: "10em", opacity: 0 },
                       { duration: 400,
                       complete: function() {
                       $( "#item-container" ).remove();
@@ -49,14 +49,6 @@ $(document).ready(function(){
       });
     });
 
-// $( ".swipe-action" ).submit(function() {
-//   $( "#item-container" ).animate({ marginLeft: "15em", opacity: 0 },
-//       { duration: 5000,
-//       complete: function() {
-//       $( this ).after( buildSwipeItem(nextItemObject) );
-//     }
-//   });
-// });
 
 // Handles left and right swipes via keyboard clicks on right and left arrows
     $(document).on("keyup", function(event) {
