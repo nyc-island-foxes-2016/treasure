@@ -1,7 +1,6 @@
-<h2>Login</h2>
+<h3 class="form-signin-heading">Please sign in</h3>
+<%= render 'form', locals: {user: @user} %>
 
 <% if flash[:alert] %>
   <div class="alert"><%= flash[:alert] %></div>
 <% end %>
-
-<%= render 'form', locals: {user: @user} %>

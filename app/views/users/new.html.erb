@@ -1,2 +1,13 @@
-<h2>Sign Up</h2>
+<h3 class="form-signin-heading">Create an account</h3>
 <%= render 'form', locals: {user: @user} %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this account from being created:</h4>
+     <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>

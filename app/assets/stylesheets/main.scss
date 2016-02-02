@@ -1,19 +1,33 @@
-.main div {
+#main-body {
+  background-color: #F5F5F5;
+  padding: 1em;
+  text-align: center;
+
+.center {
   text-align: center;
 }
 
-.jumbotron {
-  ul {
-  list-style: none;
-  padding-left: 0px;
+  p {
+  font-weight: 200;
+  font-size: 1.3em;
   }
 }
 
-.footer {
-  text-align: center;
-  padding: 1em;
-  margin-top: 1em;
-  background-color: #e7e7e7;
+.navbar-default .navbar-brand {
+  color: black;
+  font-family: 'Patua One', cursive;
+  font-size: 2em;
+}
+
+.alert {
+  color: red;
+}
+
+.notice {
+  color: green;
+}
+.navbar-brand, .navbar-default {
+  color: black;
 }
 
 .btn-group {
@@ -36,16 +50,15 @@
   p {
     padding-left: 1em;
     list-style: none;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
     color: #777777;
   }
 }
 
 .panel {
   margin: 0 auto;
+  margin-top: 2em;
   border: 1px solid #777777;
-  width: 320px;
+  width: 300px;
 
     .slidedown .glyphicon, .chat .glyphicon {
       margin: 0px 5px 0px 5px;
@@ -72,5 +85,5 @@
 
 #ajax{
 display: none;
-  
+
 }

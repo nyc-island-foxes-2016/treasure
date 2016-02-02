@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# User.delete_all && Item.delete_all && Swipe.delete_all && Match.delete_all
+# User.delete_all && Item.delete_all && Swipe.delete_all && Match.delete_all && Messages.delete_all
 
 nicola = User.create!(name:"Nicola", password: "password", email:"nicola@example.com")
 darius = User.create!(name:"Darius", password: "password", email:"darius@example.com")

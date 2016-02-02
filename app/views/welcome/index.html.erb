@@ -1,13 +1,8 @@
-<div class="jumbotron">
-  <p>List an item and swipe on other items if you'd be willing to trade!</p>
-    <ul>
-      <li><%= link_to "Sign Up with Email", register_path %></li>
-      <li><a href="/auth/facebook">Sign up with Facebook</a></li>
-    </ul>
+<p>List an item you'd be willing to trade &amp; swipe to find a match!</p>
+    <%= link_to "Sign Up with Email", register_path, class: "btn btn-md btn-primary" %>
+    <%= link_to "Sign In with Facebook", "/auth/facebook", class: "btn btn-md btn-info" %>
 
-  <p>Already have an account?</p>
-  <ul>
-    <li><%= link_to "Login with Email", login_path %></li>
-    <li><a href="/auth/facebook">Login with Facebook</a></li>
-  </ul>
-</div>
+  <hr>
+    <p>Already have an account?</p>
+    <h5><%= link_to "Login with Email", login_path %></h5>
+  <hr>
