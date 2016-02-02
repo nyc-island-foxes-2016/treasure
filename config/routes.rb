@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:new, :create]
     end
   end
+  get '/messages/:match_id', to: 'messages#for_match'
 
   resources :users, only: [:new, :create, :show, :edit, :update]
 

@@ -19,6 +19,20 @@ $(document).ready(function() {
     });
   });
 
+  function loadMessages() {
+    var fragments = window.location.href.split('/');
+    var matchId = fragments[fragments.length -1];
+    var url = '/messages/' + matchId;
+    $.get(url).done(function(response){
+      $('#chat-sm').html(response);
+    });
+  }
+
+  if ($('#chat-sm').length) {
+    setInterval(loadMessages, 5000);
+  }
+
+
 });
 
 
