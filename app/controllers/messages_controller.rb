@@ -1,5 +1,11 @@
 class MessagesController < ApplicationController
 
+  def for_match
+    @match = Match.find_by(id: params[:match_id])
+    @all_messages = @match.messages
+    render :create, layout: false
+  end
+
   def create
     @message = Message.new(message_params)
     @match = Match.find_by(id: params[:match_id])
