@@ -13,36 +13,36 @@
   <% end %>
 
 
-  <div class="panel panel-default">
+  <div id="chat-panel" class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Conversation</h3>
     </div>
     <div class="chat">
-      <% @match.messages.each do |message| %>
-        <% if current_user.name == message.user.name %>
-          <div class="chat-body clearfix">
-            <div class="header">
-              <strong class="primary-font"><%= message.user.name %></strong>
-                <small class="text-muted">
-                  <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
-                </small>
+      <div id="chat-sm">
+        <% @match.messages.each do |message| %>
+          <% if current_user.name == message.user.name %>
+            <div class="chat-body clearfix">
+              <div class="header">
+                <strong class="primary-font"><%= message.user.name %></strong>
+                  <small class="text-muted">
+                    <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
+                  </small>
+              </div>
+              <p class="pull-left"><%= message.content %></p>
             </div>
-            <p class="pull-left"><%= message.content %></p>
-          </div>
-        <% else %>
-        <div class="chat-body clearfix">
-          <div class="header">
-            <strong class="primary-font"><%= message.user.name %></strong>
-              <small class=" text-muted">
-                <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
-              </small>
-          </div>
-          <p class="pull-left"><%= message.content %></p>
-        </div>
-      </li>
+          <% else %>
+            <div class="chat-body clearfix">
+              <div class="header">
+                <strong class="primary-font"><%= message.user.name %></strong>
+                  <small class=" text-muted">
+                    <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
+                  </small>
+              </div>
+              <p class="pull-left"><%= message.content %></p>
+            </div>
+          <% end %>
       <% end %>
-    <% end %>
-
+    </div> <!--  End of Chat id -->
     <div class="panel-footer">
       <%= form_for @message, url: item_match_messages_path(@my_item, @match), class: "form-horizontal" do |f| %>
 
@@ -51,7 +51,7 @@
           <span class="input-group-btn">
             <%= f.submit "Send", class:"btn btn-warning btn-sm", id:"btn-chat" %>
           </span>
-          </div>
+      </div>
       <% end %>
     </div>
   </div>
