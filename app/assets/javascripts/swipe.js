@@ -67,7 +67,6 @@ $(document).ready(function(){
           data: $("#swipe-left").serialize(),
           dataType: "JSON"
         }).done(function(firstResponse){
-          match = firstResponse;
          $.ajax({
             url: "/available_items",
             dataType: "JSON"
@@ -96,7 +95,7 @@ $(document).ready(function(){
           data: $("#swipe-right").serialize(),
           dataType: "JSON"
         }).done(function(firstResponse){
-          match = firstResponse;
+          matchResponse = firstResponse;
          $.ajax({
             url: "/available_items",
             dataType: "JSON"
