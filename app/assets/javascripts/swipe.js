@@ -2,11 +2,13 @@ $(document).ready(function(){
 
   var nextItemObject;
   var match;
+  var swipeDirection;
 
 // Handle left or right swipes via clicking the respective buttons
     $(".swipe-action").on("submit", function(event) {
       event.preventDefault();
       var id = "#" + $(event.target).attr("id");
+      swipeDirection = event.target.childNodes[3].value;
       $.ajax({
         type: "POST",
         url: "/swipes",
@@ -23,7 +25,23 @@ $(document).ready(function(){
             $(".swipe-action input")[8].value = nextItemObject.id;
         }).then(function(event) {
           if (nextItemObject.message != "No More Items") {
-            $("#item-container").html(buildSwipeItem(nextItemObject));
+            if (swipeDirection == "R") {
+              $( "#item-container" ).animate({ marginLeft: "15em", opacity: 0 },
+                      { duration: 400,
+                      complete: function() {
+                      $( "#item-container" ).remove();
+                      $( ".available-items-container" ).prepend( buildSwipeItem(nextItemObject) );
+                    }
+                  });
+            } else if (swipeDirection == "L") {
+              $( "#item-container" ).animate({ marginRight: "15em", opacity: 0 },
+                      { duration: 400,
+                      complete: function() {
+                      $( "#item-container" ).remove();
+                      $( ".available-items-container" ).prepend( buildSwipeItem(nextItemObject) );
+                    }
+                  });
+            }
           } else {
             $('.available-items-container').html("No more swipes! Come back later.");
           }
