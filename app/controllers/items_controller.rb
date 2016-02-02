@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.user = current_user
     if @item.save
       redirect_to item_path(@item)
     else
@@ -79,6 +78,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :avatar)
+    params.require(:item).permit(:name, :description, :avatar).merge(user: current_user)
   end
 end
