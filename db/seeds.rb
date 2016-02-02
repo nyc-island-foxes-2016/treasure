@@ -69,6 +69,11 @@ s6 = Swipe.create!(my_item: scarf, other_item: piano, direction:"L")
 
 #Unrequited
 s13 = Swipe.create!(my_item: chanel, other_item: piano, direction:"R")
+s13 = Swipe.create!(my_item: chanel, other_item: chair, direction:"R")
+s13 = Swipe.create!(my_item: chanel, other_item: handbag, direction:"R")
+s13 = Swipe.create!(my_item: chanel, other_item: scarf, direction:"R")
+s13 = Swipe.create!(my_item: chanel, other_item: phish_album, direction:"R")
+s13 = Swipe.create!(my_item: chanel, other_item: cookies, direction:"R")
 s16 = Swipe.create!(my_item: nexus, other_item: shirt, direction:"L")
 s17 = Swipe.create!(my_item: nexus, other_item: headphones, direction:"L")
 

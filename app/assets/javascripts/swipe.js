@@ -3,6 +3,8 @@ $(document).ready(function(){
   var nextItemObject;
   var match;
   var swipeDirection;
+  var currentObject;
+  var matchResponse;
 
 // Handle left or right swipes via clicking the respective buttons
     $(".swipe-action").on("submit", function(event) {
@@ -15,7 +17,7 @@ $(document).ready(function(){
         data: $(id).serialize(),
         dataType: "JSON"
       }).done(function(firstResponse){
-        match = firstResponse;
+        matchResponse = firstResponse;
         $.ajax({
           url: "/available_items",
           dataType: "JSON"
@@ -24,6 +26,11 @@ $(document).ready(function(){
             $(".swipe-action input")[3].value = nextItemObject.id;
             $(".swipe-action input")[8].value = nextItemObject.id;
         }).then(function(event) {
+          if (matchResponse.match){
+            currentItemName = $("#item-container h3").html()
+            updateMatchModal(currentItemName)
+            $('#myModal').modal({show: true})
+          }
           if (nextItemObject.message != "No More Items") {
             if (swipeDirection == "R") {
               $( "#item-container" ).animate({ marginLeft: "10em", opacity: 0 },
@@ -60,12 +67,11 @@ $(document).ready(function(){
           data: $("#swipe-left").serialize(),
           dataType: "JSON"
         }).done(function(firstResponse){
-          match = firstResponse;
          $.ajax({
             url: "/available_items",
             dataType: "JSON"
-          }).done(function(response){
-            nextItemObject = response;
+          }).done(function(secondResponse){
+            nextItemObject = secondResponse;
             $(".swipe-action input")[3].value = nextItemObject.id;
             $(".swipe-action input")[8].value = nextItemObject.id;
           }).then(function(event) {
@@ -89,7 +95,7 @@ $(document).ready(function(){
           data: $("#swipe-right").serialize(),
           dataType: "JSON"
         }).done(function(firstResponse){
-          match = firstResponse;
+          matchResponse = firstResponse;
          $.ajax({
             url: "/available_items",
             dataType: "JSON"
@@ -109,17 +115,26 @@ $(document).ready(function(){
             } else {
               $('.available-items-container').html("No more swipes! Come back later.");
             }
+            if (matchResponse.match){
+              currentItemName = $("#item-container h3").html()
+              updateMatchModal(currentItemName)
+              $('#myModal').modal({show: true})
+            }
           });
         });
       }
     });
 
-function buildSwipeItem(item) {
-   return ["<div id='item-container'>",
+  function buildSwipeItem(item) {
+    return ["<div id='item-container'>",
           "<img class='avatar' src='" + item.avatar_file_name + "' alt='" + item.name + "'>",
           "<h3>" + item.name + "</h3>",
           "<p>" + item.description + "</p>",
           "</div>"].join("");
   };
+
+  function updateMatchModal(item_name) {
+    $("#myModalLabel").html("You matched with " + item_name + "!")
+  }
 });
 

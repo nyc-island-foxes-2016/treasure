@@ -4,7 +4,7 @@ class SwipesController < ApplicationController
     @swipe = Swipe.new(swipe_params)
     @swipe.my_item = current_user.items.first
     if @swipe.save
-      @match = @swipe.make_match || "No Match"
+      @match = @swipe.make_match
       if request.xhr?
           respond_to do |format|
             format.json { render json: {match: @match} }
