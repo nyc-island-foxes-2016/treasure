@@ -31,6 +31,15 @@ $(document).ready(function(){
       });
     });
 
+// $( ".swipe-action" ).submit(function() {
+//   $( "#item-container" ).animate({ marginLeft: "15em", opacity: 0 },
+//       { duration: 5000,
+//       complete: function() {
+//       $( this ).after( buildSwipeItem(nextItemObject) );
+//     }
+//   });
+// });
+
 // Handles left and right swipes via keyboard clicks on right and left arrows
     $(document).on("keyup", function(event) {
       event.preventDefault();
@@ -51,7 +60,13 @@ $(document).ready(function(){
             $(".swipe-action input")[8].value = nextItemObject.id;
           }).then(function(event) {
             if (nextItemObject.message != "No More Items") {
-              $("#item-container").html(buildSwipeItem(nextItemObject));
+              $( "#item-container" ).animate({ marginRight: "15em", opacity: 0 },
+                    { duration: 400,
+                    complete: function() {
+                    $( "#item-container" ).remove();
+                    $( ".available-items-container" ).prepend( buildSwipeItem(nextItemObject) );
+                  }
+                });
             } else {
               $('.available-items-container').html("No more swipes! Come back later.");
             }
@@ -74,7 +89,13 @@ $(document).ready(function(){
             $(".swipe-action input")[8].value = nextItemObject.id;
           }).then(function(event) {
             if (nextItemObject.message != "No More Items") {
-              $("#item-container").html(buildSwipeItem(nextItemObject));
+              $( "#item-container" ).animate({ marginLeft: "15em", opacity: 0 },
+                    { duration: 400,
+                    complete: function() {
+                    $( "#item-container" ).remove();
+                    $( ".available-items-container" ).prepend( buildSwipeItem(nextItemObject) );
+                  }
+                });
             } else {
               $('.available-items-container').html("No more swipes! Come back later.");
             }
@@ -84,9 +105,11 @@ $(document).ready(function(){
     });
 
 function buildSwipeItem(item) {
-  return ["<img class='avatar' src='" + item.avatar_file_name + "' alt='" + item.name + "'>",
+   return ["<div id='item-container'>",
+          "<img class='avatar' src='" + item.avatar_file_name + "' alt='" + item.name + "'>",
           "<h3>" + item.name + "</h3>",
-          "<p>" + item.description + "</p>"].join("");
+          "<p>" + item.description + "</p>",
+          "</div>"].join("");
   };
 });
 
