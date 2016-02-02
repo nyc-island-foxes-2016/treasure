@@ -1,6 +1,11 @@
 #main-body {
   background-color: #F5F5F5;
   padding: 1em;
+  text-align: center;
+
+.center {
+  text-align: center;
+}
 
   p {
   font-weight: 200;
@@ -8,7 +13,8 @@
   }
 }
 
-.navbar-brand {
+.navbar-default .navbar-brand {
+  color: black;
   font-family: 'Patua One', cursive;
   font-size: 2em;
 }
