@@ -14,6 +14,9 @@ $(document).ready(function() {
     ajaxRequest.done(function(response){
       console.log(response);
       $('#chat-sm').html(response);
+      $('#btn-input').val("");
+      $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+  return false;
     });
   });
 
