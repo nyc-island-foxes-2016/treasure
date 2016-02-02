@@ -1,0 +1,14 @@
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<div>
+  <% if @user.avatar %>
+    <div>
+      <img class="img-circle" src="<%= @user.avatar_file_name %>" alt="<%= @user.name %> profile picture" width="140" height="140">
+    </div>
+  <% end %>
+  <h2><%= @user.name %></h2>
+  <p> <%= link_to "Edit my profile", edit_user_path %></p>
+</div>
+

@@ -1,0 +1,89 @@
+#main-body {
+  background-color: #F5F5F5;
+  padding: 1em;
+  text-align: center;
+
+.center {
+  text-align: center;
+}
+
+  p {
+  font-weight: 200;
+  font-size: 1.3em;
+  }
+}
+
+.navbar-default .navbar-brand {
+  color: black;
+  font-family: 'Patua One', cursive;
+  font-size: 2em;
+}
+
+.alert {
+  color: red;
+}
+
+.notice {
+  color: green;
+}
+.navbar-brand, .navbar-default {
+  color: black;
+}
+
+.btn-group {
+    .btn {
+      display: block;
+  }
+}
+
+.chat {
+  .chat-body {
+    border-bottom: 1px dotted #B3A9A9;
+    }
+
+  .header {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 1em;
+  }
+
+  p {
+    padding-left: 1em;
+    list-style: none;
+    color: #777777;
+  }
+}
+
+.panel {
+  margin: 0 auto;
+  margin-top: 2em;
+  border: 1px solid #777777;
+  width: 300px;
+
+    .slidedown .glyphicon, .chat .glyphicon {
+      margin: 0px 5px 0px 5px;
+    }
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 9px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+#ajax{
+display: none;
+
+}

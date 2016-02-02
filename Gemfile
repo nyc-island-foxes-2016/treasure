@@ -7,6 +7,8 @@ gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -22,6 +24,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use paperclip for image management
+gem "paperclip", "~> 4.3"
+
+gem "omniauth-facebook"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -36,6 +43,7 @@ group :development, :test do
  	gem 'factory_girl_rails'
  	gem 'pry-rails'
  	gem 'pry-nav'
+  gem 'better_errors'
 end
 
 group :development do

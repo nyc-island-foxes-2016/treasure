@@ -1,0 +1,7 @@
+<% if item.avatar %>
+  <img src="<%= item.avatar_file_name %>" alt="<%= item.name %>">
+<% end %>
+
+<h3><%= item.name %></h3>
+<p><%= item.description %></p>
+<%= link_to "Edit my item", edit_item_path if item.user == current_user%>
