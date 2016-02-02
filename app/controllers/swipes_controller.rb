@@ -4,18 +4,19 @@ class SwipesController < ApplicationController
     @swipe = Swipe.new(swipe_params)
     @swipe.my_item = current_user.items.first
     if @swipe.save
-      @swipe.make_match
-      @item = Item.available(current_user).shuffle.sample
+      # binding.pry
+      @match = @swipe.make_match || "No Match"
       if request.xhr?
-        respond_to do |format|
-          format.json { render json: {item: @item, match: @match } }
-          format.html { redirect_to available_items_path }
-        end
+          respond_to do |format|
+            format.json { render json: {match: @match} }
+            format.html { redirect_to available_items_path }
+          end
+      else
+        redirect_to available_items_path
       end
     else
       flash[:notice] = "Something went wrong. Sorry!"
       redirect_to available_items_path
-      #TODO: figure out where to redirect_to or what to render
     end
   end
 

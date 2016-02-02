@@ -32,10 +32,17 @@ class ItemsController < ApplicationController
     if current_user
       @swipe = Swipe.new
       available_items = Item.available(current_user)
-      if !available_items.empty?
-        @item = available_items.shuffle.sample
+      @item = available_items.shuffle.sample
+      if request.xhr?
+        if !available_items.empty?
+          # binding.pry
+          render json: @item
+        else
+          @message = "You're out of swipes for the day. Check back tomorrow!"
+          render json: @message
+        end
       else
-        flash[:notice] = "You're out of swipes for the day. Check back tomorrow!"
+        @item
       end
     else
       redirect_to login_path

@@ -8,13 +8,13 @@
   <% if @item %>
     <%= render partial: "swipe_item", locals: {item: @item} %>
 
-    <%= form_for @swipe, html: {id: 'left-swipe'} do |f| %>
+    <%= form_for @swipe, html: {class: 'swipe-action', id: 'swipe-left'} do |f| %>
       <%= f.hidden_field :direction, value: "L" %>
       <%= f.hidden_field :other_item_id, value: @item.id %>
       <%= f.submit "swipe left",  class: "btn btn-danger pull-left"%>
     <% end %>
 
-    <%= form_for @swipe, html: {id: 'right-swipe'} do |f| %>
+    <%= form_for @swipe, html: {class: 'swipe-action', id: 'swipe-right'} do |f| %>
       <%= f.hidden_field :direction, value: "R" %>
       <%= f.hidden_field :other_item_id, value: @item.id %>
       <%= f.submit "swipe right", class: "btn btn-success pull-right" %>
