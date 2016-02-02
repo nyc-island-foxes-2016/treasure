@@ -1,47 +1,80 @@
 $(document).ready(function(){
 
-  function swipeLeft() {
-    $("#left-swipe").on("submit", function(event) {
+  var nextItemObject;
+  var match;
+
+
+    $(".swipe-action").on("submit", function(event) {
       event.preventDefault();
-    $.ajax({
-          type: "POST",
-          url: "/swipes",
-          data: $("#left-swipe").serialize(),
-          dataType: "JSON"
-        }).done(function(response){
-          //Changing hidden value for item id on left swipe form
-          $("#left-swipe input")[3].value = response.item.id
-          $('#item-container').html(buildSwipeItem(response.item));
-        }).fail(function(response){
-          console.log("NAH", response);
-        });
-    });
-  };
-
-  swipeLeft();
-
-  $(document).on("keyup", function(event) {
-    if(event.keyCode == 37) {
-      // $('#item-container').addClass('move-left');
-
-      event.preventDefault();
-      $.ajax({
+      $.when($.ajax({
         type: "POST",
         url: "/swipes",
-        data: $("#left-swipe").serialize(),
+        data: $(".swipe-action").serialize(),
         dataType: "JSON"
-              }).done(function(response){
-        $("#left-swipe input")[3].value = response.item.id
-        $('#item-container').html(buildSwipeItem(response.item));
-        $('#item-container').removeClass('move-left');
+      }).done(function(response){
+        match = response;
       }).fail(function(response){
-        console.log("NAH", response);
-      });
-    } else if(event.keyCode == 39) {
-       $('#item-container').addClass('move-right');
-    };
-  });
+      }), $.ajax({
+          url: "/available_items",
+          dataType: "JSON"
+        }).done(function(response){
+          nextItemObject = response;
+          $(".swipe-action input")[3].value = nextItemObject.id;
+          $(".swipe-action input")[8].value = nextItemObject.id;
+        }).fail(function(response){
+        })).then(function(event) {
+          console.log("done", nextItemObject, match);
+          $("#item-container").html(buildSwipeItem(nextItemObject));
+        });
+    });
 
+// $(".swipe-action").serialize().match(/direction...../)
+
+    $(document).on("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode == 37) {
+        $.when($.ajax({
+          type: "POST",
+          url: "/swipes",
+          data: $("#swipe-left").serialize(),
+          dataType: "JSON"
+        }).done(function(response){
+          match = response;
+        }).fail(function(response){
+        }), $.ajax({
+            url: "/available_items",
+            dataType: "JSON"
+          }).done(function(response){
+            nextItemObject = response;
+            $(".swipe-action input")[3].value = nextItemObject.id;
+            $(".swipe-action input")[8].value = nextItemObject.id;
+          }).fail(function(response){
+          })).then(function(event) {
+            console.log("done", nextItemObject, match);
+            $("#item-container").html(buildSwipeItem(nextItemObject));
+          });
+      } else if (event.keyCode == 39) {
+        $.when($.ajax({
+          type: "POST",
+          url: "/swipes",
+          data: $("#swipe-right").serialize(),
+          dataType: "JSON"
+        }).done(function(response){
+          match = response;
+        }).fail(function(response){
+        }), $.ajax({
+            url: "/available_items",
+            dataType: "JSON"
+          }).done(function(response){
+            nextItemObject = response;
+          }).fail(function(response){
+          })).then(function(event) {
+            console.log("done", nextItemObject, match);
+            $(".swipe-action input")[3].value = nextItemObject.id;
+            $("#item-container").html(buildSwipeItem(nextItemObject));
+          });
+      }
+    });
 
 
 function buildSwipeItem(item) {
@@ -52,6 +85,90 @@ function buildSwipeItem(item) {
           "</div>"].join("");
   };
 });
+
+
+
+
+//   function swipeLeft() {
+//     $("#left-swipe").on("submit", function(event) {
+//       event.preventDefault();
+//     $.ajax({
+//           type: "POST",
+//           url: "/swipes",
+//           data: $("#left-swipe").serialize(),
+//           dataType: "JSON"
+//         }).done(function(response){
+//           //Changing hidden value for item id on left swipe form
+//           $("#left-swipe input")[3].value = response.item.id
+//           $('#item-container').html(buildSwipeItem(response.item));
+//         }).fail(function(response){
+//           console.log("NAH", response);
+//         });
+//     });
+//   };
+//   swipeLeft();
+
+// // another function talks to items controller to get next item and only is a get
+
+// // once done, do jquery
+
+//   function swipeRight() {
+//     $("#right-swipe").on("submit", function(event) {
+//       event.preventDefault();
+//     $.ajax({
+//           type: "POST",
+//           url: "/swipes",
+//           data: $("#right-swipe").serialize(),
+//           dataType: "JSON"
+//         }).done(function(response){
+//           //Changing hidden value for item id on left swipe form
+//           $("#right-swipe input")[3].value = response.item.id
+//           $('#item-container').html(buildSwipeItem(response.item));
+//         }).fail(function(response){
+//           console.log("NAH", response);
+//         });
+//     });
+//   };
+//   swipeRight();
+
+//   $(document).on("keyup", function(event) {
+//     if(event.keyCode == 37) {
+//       // $('#item-container').addClass('move-left');
+
+//       event.preventDefault();
+//       $.ajax({
+//         type: "POST",
+//         url: "/swipes",
+//         data: $("#left-swipe").serialize(),
+//         dataType: "JSON"
+//               }).done(function(response){
+//         $("#left-swipe input")[3].value = response.item.id
+//         $('#item-container').html(buildSwipeItem(response.item));
+//         $('#item-container').removeClass('move-left');
+//       }).fail(function(response){
+//         console.log("NAH", response);
+//       });
+//     } else if(event.keyCode == 39) {
+//        $('#item-container').addClass('move-right');
+//         event.preventDefault();
+//         $.ajax({
+//         type: "POST",
+//         url: "/swipes",
+//         data: $("#right-swipe").serialize(),
+//         dataType: "JSON"
+//               }).done(function(response){
+//         $("#right-swipe input")[3].value = response.item.id
+//         $('#item-container').html(buildSwipeItem(response.item));
+//         $('#item-container').removeClass('move-right');
+//       }).fail(function(response){
+//         console.log("NAH", response);
+//       });
+//     };
+//   });
+
+
+
+
 
 
 
