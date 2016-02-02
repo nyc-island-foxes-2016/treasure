@@ -26,7 +26,7 @@ class Item < ActiveRecord::Base
      " (       select s.other_item_id from swipes s join items i on i.id = s.my_item_id " +
      "  where i.user_id = ? ) "
     availables = where(where_clause, user.id, user.id)
-    availables.reject{|item| item.swapped }
+    # availables.reject{|item| item.swapped }
   end
 
   def add_default_image
