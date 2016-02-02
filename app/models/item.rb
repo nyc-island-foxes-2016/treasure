@@ -33,4 +33,8 @@ class Item < ActiveRecord::Base
     self.avatar_file_name = 'https://placehold.it/300.png/09f/fff'
   end
 
+  def self.most_recent
+    self.order(created_at: :desc)
+  end
+
 end
