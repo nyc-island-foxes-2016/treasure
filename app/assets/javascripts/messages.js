@@ -3,6 +3,7 @@ $(document).ready(function() {
   $('#main-body').on('submit', '#new_message', function(event){
     var print =  event;
     event.preventDefault();
+
     var form = this;
     var request_url = $(this).attr('action');
     var ajaxRequest = $.ajax({
