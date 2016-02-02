@@ -3,6 +3,7 @@ $(document).ready(function(){
   var nextItemObject;
   var match;
   var swipeDirection;
+  var matchResponse;
 
 // Handle left or right swipes via clicking the respective buttons
     $(".swipe-action").on("submit", function(event) {
@@ -15,7 +16,8 @@ $(document).ready(function(){
         data: $(id).serialize(),
         dataType: "JSON"
       }).done(function(firstResponse){
-        match = firstResponse;
+        matchResponse = firstResponse;
+        debugger;
         $.ajax({
           url: "/available_items",
           dataType: "JSON"
@@ -24,6 +26,10 @@ $(document).ready(function(){
             $(".swipe-action input")[3].value = nextItemObject.id;
             $(".swipe-action input")[8].value = nextItemObject.id;
         }).then(function(event) {
+          if (matchResponse.match){
+             $('#myModal').modal({show: true})
+             debugger;
+          }
           if (nextItemObject.message != "No More Items") {
             if (swipeDirection == "R") {
               $( "#item-container" ).animate({ marginLeft: "10em", opacity: 0 },
@@ -121,5 +127,9 @@ $(document).ready(function(){
           "<p>" + item.description + "</p>",
           "</div>"].join("");
   };
+
+  function buildMatchModal(item, match) {
+
+  }
 });
 
