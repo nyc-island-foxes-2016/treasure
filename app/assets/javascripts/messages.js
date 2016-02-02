@@ -25,7 +25,6 @@ $(document).ready(function() {
     var url = '/messages/' + matchId;
     $.get(url).done(function(response){
       $('#chat-sm').html(response);
-      console.log('reloaded messages');
     });
   }
 
