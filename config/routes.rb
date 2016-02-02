@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/register', to: 'users#new'
   get '/login', to: 'sessions#new'
+  get '/search' => 'search#index'
 
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update] do
