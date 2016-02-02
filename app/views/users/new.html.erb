@@ -1,6 +1,7 @@
-<h3 class="form-signin-heading">Create an account</h3>
+<h3>Create an account</h3>
 <%= render 'form', locals: {user: @user} %>
 
+<div class="left">
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@user.errors.count, "error") %> prohibited this account from being created:</h4>
@@ -11,3 +12,4 @@
       </ul>
     </div>
   <% end %>
+</div>

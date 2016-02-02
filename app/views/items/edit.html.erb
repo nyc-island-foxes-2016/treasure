@@ -1,2 +1,13 @@
 <h2>Edit Item</h2>
 <%= render 'form', locals: {item: @item} %>
+
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h4>
+     <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
