@@ -1,16 +1,5 @@
 <%= form_for(@user, html: {class: 'form-horizontal', multipart: true}) do |f| %>
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
-     <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field form-group">
     <%= f.label :name, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
@@ -40,7 +29,7 @@
 
   <div class="actions form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit %>
+      <%= f.submit "Create account", class:"btn btn-lg btn-primary"%>
     </div>
   </div>
 
