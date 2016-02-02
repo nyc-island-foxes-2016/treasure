@@ -1,1 +1,8 @@
-<%= link_to match.other(@item).name, item_match_path(@item, match) %>
+<div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+    <div class="caption">
+      <h3><%= link_to match.other(@item).name, item_match_path(@item, match) %></h3>
+      <p><%= match.other_item.description %></p>
+    </div>
+  </div>
+</div>
