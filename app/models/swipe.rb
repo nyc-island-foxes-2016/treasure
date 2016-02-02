@@ -13,11 +13,11 @@ class Swipe < ActiveRecord::Base
   # after_save :make_match
 
   def make_match
-    return unless direction == "R"
+    return false unless direction == "R"
     #Find if another 'swipe right' exists with same two items
     first_swipe = Swipe.find_by(other_item: self.my_item, my_item: self.other_item, direction: "R")
     return Match.create!(given_swipe: first_swipe, received_swipe: self) if first_swipe
-
+    return false
   end
 
 end

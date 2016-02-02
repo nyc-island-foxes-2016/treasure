@@ -52,8 +52,8 @@ match3 = Match.create!(given_swipe: s14, received_swipe: s15)
 #Swapped_match
 match4 = Match.create!(given_swipe: s18, received_swipe: s19, swapped_at: DateTime.now)
 #Make match4's items 'swapped'
-Item.find(2).update_attributes(swapped: true)
-Item.find(9).update_attributes(swapped: true)
+# Item.find(2).update_attributes(swapped: true)
+# Item.find(9).update_attributes(swapped: true)
 
 #Opposing
 s3 = Swipe.create!(my_item: chair, other_item: handbag, direction:"L")
