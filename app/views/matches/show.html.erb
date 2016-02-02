@@ -44,6 +44,11 @@
       <% end %>
     </div> <!--  End of Chat id -->
     <div class="panel-footer">
+     <% if flash[:notice] %>
+     <div class="match-flash-notice">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
       <%= form_for @message, url: item_match_messages_path(@my_item, @match), class: "form-horizontal" do |f| %>
 
       <div class="input-group">
