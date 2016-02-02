@@ -1,4 +1,7 @@
 <h3>Matches:</h3>
-
-<%= render @matches %>
-
+<ul>
+<% @matched_items.each do |matched_item| %>
+  <%= matched_item.name %>
+  <li> <%= link_to matched_item.name, item_match_path(@item, Match.find_match) %> </li>
+<% end %>
+</ul>

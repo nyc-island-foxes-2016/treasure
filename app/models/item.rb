@@ -21,6 +21,16 @@ class Item < ActiveRecord::Base
      Match.where(id: ids)
   end
 
+  def all_matched_items
+    Item.where(id: (Swipe.where(id: Match.all.pluck(:given_swipe_id) + Match.all.pluck(:received_swipe_id)).where(my_item_id: self.id).pluck(:other_item_id)))
+  end
+
+  # def all_matches_beta
+  #   Match.where(id: (Swipe.where(id: Item.all.pluck(:my_item) + Item.all.pluck(:other_item)).where()))
+  # end
+
+
+
   def self.available(user)
     where_clause = " user_id != ? and id not in " +
      " (       select s.other_item_id from swipes s join items i on i.id = s.my_item_id " +

@@ -21,8 +21,9 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     if @item && @item.user == current_user
-      @matches = @item.all_matches
-      @has_matches = !@matches.empty?
+      @matched_items = @item.all_matched_items
+      binding.pry
+      @has_matches = !@matched_items.empty?
     else
       render :file => "#{Rails.root}/public/404.html", :status => 404
     end
