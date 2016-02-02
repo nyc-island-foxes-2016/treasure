@@ -8,8 +8,7 @@ class Swipe < ActiveRecord::Base
 
   #Necessary only for other associations
   has_many :given_swipe_matches, foreign_key: :given_swipe_id, class_name: "Match"
-  has_many :received_swipe_matches, foreign_key: :received_swipe_id, class_name: "Match"
-
+  has_many :received_swipe_matches, foreign_key: :given_swipe_id, class_name: "Match"
   # after_save :make_match
 
   def make_match
