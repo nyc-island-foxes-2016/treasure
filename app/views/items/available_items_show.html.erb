@@ -36,18 +36,22 @@
   <% end %>
 </div>
 
-<div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
+<div class="modal fade center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <h4 class="modal-title" id="myModalLabel">You Matched!</h4>
-            <img src="<%= @item.avatar_file_name %>" alt="<%= @item.name %>">
-          </div>
-      </div>
+          <div class="modal-header">
+            <div class="modal-content">
+              <h4 class="modal-title" id="myModalLabel"></h4>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

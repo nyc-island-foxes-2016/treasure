@@ -3,6 +3,7 @@ $(document).ready(function(){
   var nextItemObject;
   var match;
   var swipeDirection;
+  var currentObject;
   var matchResponse;
 
 // Handle left or right swipes via clicking the respective buttons
@@ -17,7 +18,6 @@ $(document).ready(function(){
         dataType: "JSON"
       }).done(function(firstResponse){
         matchResponse = firstResponse;
-        debugger;
         $.ajax({
           url: "/available_items",
           dataType: "JSON"
@@ -27,8 +27,9 @@ $(document).ready(function(){
             $(".swipe-action input")[8].value = nextItemObject.id;
         }).then(function(event) {
           if (matchResponse.match){
-             $('#myModal').modal({show: true})
-             debugger;
+            currentItemName = $("#item-container h3").html()
+            updateMatchModal(currentItemName)
+            $('#myModal').modal({show: true})
           }
           if (nextItemObject.message != "No More Items") {
             if (swipeDirection == "R") {
@@ -70,8 +71,8 @@ $(document).ready(function(){
          $.ajax({
             url: "/available_items",
             dataType: "JSON"
-          }).done(function(response){
-            nextItemObject = response;
+          }).done(function(secondResponse){
+            nextItemObject = secondResponse;
             $(".swipe-action input")[3].value = nextItemObject.id;
             $(".swipe-action input")[8].value = nextItemObject.id;
           }).then(function(event) {
@@ -115,6 +116,11 @@ $(document).ready(function(){
             } else {
               $('.available-items-container').html("No more swipes! Come back later.");
             }
+            if (matchResponse.match){
+              currentItemName = $("#item-container h3").html()
+              updateMatchModal(currentItemName)
+              $('#myModal').modal({show: true})
+            }
           });
         });
       }
@@ -128,8 +134,8 @@ $(document).ready(function(){
           "</div>"].join("");
   };
 
-  function buildMatchModal(item, match) {
-
+  function updateMatchModal(item_name) {
+    $("#myModalLabel").html("You matched with " + item_name + "!")
   }
 });
 
