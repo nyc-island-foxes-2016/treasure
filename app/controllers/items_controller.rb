@@ -35,11 +35,9 @@ class ItemsController < ApplicationController
       @item = available_items.shuffle.sample
       if request.xhr?
         if !available_items.empty?
-          # binding.pry
           render json: @item
         else
-          @message = "You're out of swipes for the day. Check back tomorrow!"
-          render json: @message
+          render json:{message: "No More Items"}
         end
       else
         @item

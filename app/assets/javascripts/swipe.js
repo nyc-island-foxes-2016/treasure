@@ -18,17 +18,21 @@ $(document).ready(function(){
           url: "/available_items",
           dataType: "JSON"
         }).done(function(response){
-          nextItemObject = response;
-          $(".swipe-action input")[3].value = nextItemObject.id;
-          $(".swipe-action input")[8].value = nextItemObject.id;
+          if (response.message!= "No More Matches") {
+            nextItemObject = response;
+            $(".swipe-action input")[3].value = nextItemObject.id;
+            $(".swipe-action input")[8].value = nextItemObject.id;
+          }
         }).fail(function(response){
+          debugger;
         })).then(function(event) {
-          console.log("done", nextItemObject, match);
-          $("#item-container").html(buildSwipeItem(nextItemObject));
+          debugger;
+          if (nextItemObject != "No More Matches") {
+            console.log("done", nextItemObject, match);
+            $("#item-container").html(buildSwipeItem(nextItemObject));
+          }
         });
     });
-
-// $(".swipe-action").serialize().match(/direction...../)
 
     $(document).on("keyup", function(event) {
       event.preventDefault();

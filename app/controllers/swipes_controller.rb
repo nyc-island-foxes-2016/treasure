@@ -4,7 +4,6 @@ class SwipesController < ApplicationController
     @swipe = Swipe.new(swipe_params)
     @swipe.my_item = current_user.items.first
     if @swipe.save
-      # binding.pry
       @match = @swipe.make_match || "No Match"
       if request.xhr?
           respond_to do |format|
