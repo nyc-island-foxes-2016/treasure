@@ -6,32 +6,30 @@ $(document).ready(function(){
 
     $(".swipe-action").on("submit", function(event) {
       event.preventDefault();
-      $.when($.ajax({
+      var id = "#" + $(event.target).attr("id");
+      $.ajax({
         type: "POST",
         url: "/swipes",
-        data: $(".swipe-action").serialize(),
+        data: $(id).serialize(),
         dataType: "JSON"
-      }).done(function(response){
-        match = response;
-      }).fail(function(response){
-      }), $.ajax({
+      }).done(function(firstResponse){
+        match = firstResponse;
+        $.ajax({
           url: "/available_items",
           dataType: "JSON"
-        }).done(function(response){
-          if (response.message!= "No More Matches") {
-            nextItemObject = response;
+        }).done(function(secondResponse){
+            nextItemObject = secondResponse;
             $(".swipe-action input")[3].value = nextItemObject.id;
             $(".swipe-action input")[8].value = nextItemObject.id;
-          }
-        }).fail(function(response){
-          debugger;
-        })).then(function(event) {
-          debugger;
-          if (nextItemObject != "No More Matches") {
+        }).then(function(event) {
+          if (nextItemObject.message != "No More Items") {
             console.log("done", nextItemObject, match);
             $("#item-container").html(buildSwipeItem(nextItemObject));
+          } else {
+            $('.available-items-container').html("No more swipes! Come back later.");
           }
         });
+      });
     });
 
     $(document).on("keyup", function(event) {
@@ -54,8 +52,12 @@ $(document).ready(function(){
             $(".swipe-action input")[8].value = nextItemObject.id;
           }).fail(function(response){
           })).then(function(event) {
-            console.log("done", nextItemObject, match);
-            $("#item-container").html(buildSwipeItem(nextItemObject));
+            if (nextItemObject.message != "No More Items") {
+              console.log("done", nextItemObject, match);
+              $("#item-container").html(buildSwipeItem(nextItemObject));
+            } else {
+              $('.available-items-container').html("No more swipes! Come back later.");
+            }
           });
       } else if (event.keyCode == 39) {
         $.when($.ajax({
@@ -75,6 +77,7 @@ $(document).ready(function(){
           })).then(function(event) {
             console.log("done", nextItemObject, match);
             $(".swipe-action input")[3].value = nextItemObject.id;
+            $(".swipe-action input")[8].value = nextItemObject.id;
             $("#item-container").html(buildSwipeItem(nextItemObject));
           });
       }
