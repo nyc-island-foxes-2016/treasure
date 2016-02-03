@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # Use paperclip for image management
-gem "paperclip", "~> 4.3"
+gem "paperclip"
 gem 'aws-sdk'
 
 gem "omniauth-facebook"
