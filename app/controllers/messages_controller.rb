@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
     @message.match = @match
     @my_item = current_user.items.first
     if @message.save
-      @match.touch
       if request.xhr?
         @all_messages = @match.messages
           puts @match.messages.to_json
