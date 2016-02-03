@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :require_current_user
+  before_action :require_current_user, only: [:new, :available_items_show]
 
   def new
     @item = Item.new
@@ -26,25 +26,21 @@ class ItemsController < ApplicationController
   end
 
   def available_items_show
-    if current_user
-      @swipe = Swipe.new
-      available_items = Item.available(current_user)
-      @item = available_items.shuffle.sample
-      if request.xhr?
-        if available_items.any?
-          render json: @item
-        else
-          render json:{message: "No More Items"}
-        end
+    @swipe = Swipe.new
+    available_items = Item.available(current_user)
+    @item = available_items.shuffle.sample
+    if request.xhr?
+      if available_items.any?
+        render json: @item
       else
-        if available_items.any?
-          @item
-        else
-          render "items/_out_of_swipes"
-        end
+        render json:{message: "No More Items"}
       end
     else
-      redirect_to login_path
+      if available_items.any?
+        @item
+      else
+        render "items/_out_of_swipes"
+      end
     end
   end
 
