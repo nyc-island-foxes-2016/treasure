@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  skip_before_action :require_current_user, only: [:new, :create, :oauth_create]
 
   def new
     @user = User.new
