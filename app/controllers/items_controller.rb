@@ -9,6 +9,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    binding.pry
+    if params['zipcode'] != ''
+      @item.coordinates(params['zipcode'])
+    end
     if @item.save
       redirect_to item_path(@item)
     else

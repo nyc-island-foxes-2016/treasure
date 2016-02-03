@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+
+
   validates :name, presence: true, length: {minimum: 2, maximum: 50}
   validates :description, presence: true, length: {maximum: 1000}
   validates :user_id, presence: true
@@ -19,6 +21,13 @@ class Item < ActiveRecord::Base
   def all_matches
      ids = given_swipe_matches.pluck(:id) + received_swipe_matches.pluck(:id)
      Match.where(id: ids)
+  end
+
+  def coordinates(zipcode)
+    address = Geocoder.search(zipcode)
+    self.latitude = address[0].data['geometry']['location']['lat']
+    self.longitude = address[0].data['geometry']['location']['lng']
+    binding.pry
   end
 
   def self.available(user)
