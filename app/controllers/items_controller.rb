@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_path(@item)
     else
-      flash[:notice] = "We could not save your treasure. Try again, matey!"
+      flash[:notice] = "We could not save your treasure. Please try again."
       redirect_to new_item_path
     end
   end
@@ -47,15 +47,15 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find_by(id: params[:id])
-    if !@item
+    @item = Item.find(params[:id])
+    if @item.user != current_user
       render :file => "#{Rails.root}/public/404.html", :status => 404
     end
   end
 
   def update
     @item = Item.find_by(id: params[:id])
-    if !!params[:item][:swapped]
+    if params[:item][:swapped]
       @item.update_attributes(swapped: true)
       @match = Match.find(params[:match])
       @match.make_swap_if_mutual_swap(@item)
