@@ -1,63 +1,66 @@
-<div>
-  <h4><%= @my_item.name %> &amp; <%= @other_item.name %></h4>
-<!--   <%= render @other_item %> -->
-
-  <%= form_for @my_item do |f| %>
-    <%= f.hidden_field :swapped %>
-    <%= hidden_field_tag "match", @match.id %>
-    <%= f.submit "Swap!", class: "btn btn-lg btn-primary" %>
-  <% end %>
-
-  <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
-  <% end %>
-
-
-  <div id="chat-panel" class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Conversation</h3>
-    </div>
-    <div class="chat">
-      <div id="chat-sm">
-        <% @match.messages.each do |message| %>
-          <% if current_user.name == message.user.name %>
-            <div class="chat-body clearfix">
-              <div class="header">
-                <strong class="primary-font"><%= message.user.name %></strong>
-                  <small class="text-muted">
-                    <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
-                  </small>
-              </div>
-              <p class="pull-left"><%= message.content %></p>
-            </div>
-          <% else %>
-            <div class="chat-body clearfix">
-              <div class="header">
-                <strong class="primary-font"><%= message.user.name %></strong>
-                  <small class=" text-muted">
-                    <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
-                  </small>
-              </div>
-              <p class="pull-left"><%= message.content %></p>
-            </div>
-          <% end %>
+<h3><%= @my_item.name %> &amp; <%= @other_item.name %></h3>
+<div class="row">
+  <div class="col-sm-6 col-md-4 item-display" >
+    <div class="thumbnail">
+      <% if @match.other_item.avatar %>
+        <img src="<%= @match.other_item.avatar_file_name %>" alt="<%= @match.other_item.name %>">
       <% end %>
-    </div> <!--  End of Chat id -->
-    <div class="panel-footer">
-      <%= form_for @message, url: item_match_messages_path(@my_item, @match), class: "form-horizontal" do |f| %>
-
-      <div class="input-group">
-        <%= f.text_field :content, class: 'form-control input-sm', id:"btn-input" %>
-          <span class="input-group-btn">
-            <%= f.submit "Send", class:"btn btn-warning btn-sm", id:"btn-chat" %>
-          </span>
+      <div class="caption">
+        <h3><%= @match.other_item.name %></h3>
+        <p><%= @match.other_item.description %></p>
       </div>
-      <% end %>
     </div>
   </div>
+  <div class="col-sm-6 col-md-4">
+    <div id="chat-panel" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Conversation</h3>
+      </div>
+      <div class="chat">
+        <div id="chat-sm">
+          <% @match.messages.each do |message| %>
+          <% if current_user.name == message.user.name %>
+          <div class="chat-body clearfix">
+            <div class="header">
+              <strong class="primary-font"><%= message.user.name %></strong>
+              <small class="text-muted">
+                <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
+              </small>
+            </div>
+            <p class="pull-left"><%= message.content %></p>
+          </div>
+          <% else %>
+          <div class="chat-body clearfix">
+            <div class="header">
+              <strong class="primary-font"><%= message.user.name %></strong>
+              <small class=" text-muted">
+                <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
+              </small>
+            </div>
+            <p class="pull-left"><%= message.content %></p>
+          </div>
+          <% end %>
+          <% end %>
+        </div> <!--  End of Chat id -->
+        <div class="panel-footer">
+          <%= form_for @message, url: item_match_messages_path(@my_item, @match), class: "form-horizontal" do |f| %>
 
-  <% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
-  <% end %>
-
+          <div class="input-group">
+            <%= f.text_field :content, class: 'form-control input-sm', id:"btn-input" %>
+            <span class="input-group-btn">
+              <%= f.submit "Send", class:"btn btn-warning btn-sm", id:"btn-chat" %>
+            </span>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4" id="sawp-button">
+    <%= form_for @my_item, method: "PATCH" do |f| %>
+      <%= f.hidden_field :swapped %>
+      <%= hidden_field_tag "match", "#{@match.id}" %>
+      <%= f.submit "Swap!", class: "btn btn-lg btn-primary btn-xlarge" %>
+    <% end %>
+  </div>
 </div>
