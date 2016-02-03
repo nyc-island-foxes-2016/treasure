@@ -7,8 +7,10 @@ class MessagesController < ApplicationController
   end
 
   def create
+    @message = Message.new(message_params)
     @match = Match.find_by(id: params[:match_id])
-    @message = @match.message.new(message_params)
+    @message.user = current_user
+    @message.match = @match
     @my_item = current_user.items.first
     if @message.save
       @match.touch
@@ -32,6 +34,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content).merge(user: current_user)
+    params.require(:message).permit(:content)
   end
 end
