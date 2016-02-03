@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     if @user
       flash[:notice] = 'Login successful'
       session[:user_id] = @user.id
-        if !@user.items.empty?
+        if @user.items.any?
           redirect_to '/available_items'
         else
           redirect_to new_item_path

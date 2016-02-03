@@ -13,11 +13,7 @@ class Match < ActiveRecord::Base
   alias item_2 other_item
 
   def other(item)
-    if item == self.item_1
-      return self.item_2
-     else
-      return self.item_1
-    end
+    item == item_1 ? item_2 : item_1
   end
 
   def make_swap_if_mutual_swap(item)
@@ -27,12 +23,8 @@ class Match < ActiveRecord::Base
     end
   end
 
-  def item_belongs_to?(item)
-    if self.my_item == item || self.other_item == item
-      return true
-    else
-      false
-    end
+  def belongs_to_item?(item)
+    item == my_item || item == other_item
   end
 
 end

@@ -2,9 +2,9 @@
   <h4><%= @my_item.name %> &amp; <%= @other_item.name %></h4>
 <!--   <%= render @other_item %> -->
 
-  <%= form_for @my_item, method: "PATCH" do |f| %>
+  <%= form_for @my_item do |f| %>
     <%= f.hidden_field :swapped %>
-    <%= hidden_field_tag "match", "#{@match.id}" %>
+    <%= hidden_field_tag "match", @match.id %>
     <%= f.submit "Swap!", class: "btn btn-lg btn-primary" %>
   <% end %>
 
