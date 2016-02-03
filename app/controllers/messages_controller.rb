@@ -7,13 +7,12 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
     @match = Match.find_by(id: params[:match_id])
-    @message.match = @match
+    @message = @match.message.new(message_params)
     @my_item = current_user.items.first
     if @message.save
       @match.touch
-     if request.xhr?
+      if request.xhr?
         @all_messages = @match.messages
           puts @match.messages.to_json
           render :create, layout: false
@@ -22,10 +21,10 @@ class MessagesController < ApplicationController
       end
     else
       if request.xhr?
-      flash[:notice] = "Sorry! We couldn't send your message, phone companies suck"
+      flash[:notice] = "Sorry! We couldn't send your message."
         render :create, layout: false
       end
-      flash[:notice] = "Sorry! We couldn't send your message, phone companies suck"
+      flash[:notice] = "Sorry! We couldn't send your message."
       redirect_to item_match_path(@my_item, @match)
     end
   end
