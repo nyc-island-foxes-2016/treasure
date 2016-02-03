@@ -18,7 +18,7 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
-<body>  
+<body>
     <div class="container">
       <!-- Static navbar -->
       <nav class="navbar navbar-default">
@@ -51,6 +51,17 @@
         </div><!--/.container-fluid -->
       </nav>
     </header>
+
+    <div class="flash">
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <p><%= flash[:alert] %></p>
+      <% end %>
+    </div>
+
     <main id="main-body">
       <%= yield %>
     </div>

@@ -50,7 +50,7 @@ match2 = Match.create!(given_swipe: s7, received_swipe: s8)
 match3 = Match.create!(given_swipe: s14, received_swipe: s15)
 
 #Swapped_match
-match4 = Match.create!(given_swipe: s18, received_swipe: s19, swapped_at: DateTime.now)
+# match4 = Match.create!(given_swipe: s18, received_swipe: s19, swapped_at: DateTime.now)
 #Make match4's items 'swapped'
 # Item.find(2).update_attributes(swapped: true)
 # Item.find(9).update_attributes(swapped: true)
@@ -78,7 +78,6 @@ s16 = Swipe.create!(my_item: nexus, other_item: shirt, direction:"L")
 s17 = Swipe.create!(my_item: nexus, other_item: headphones, direction:"L")
 
 # Example match to be used for message seeds
-
 n_d_match = Match.where(given_swipe_id: s1.id).where(received_swipe_id: s2.id).first
 
 m1 = Message.create!(user: nicola, content: "Let's meet to trade", match: n_d_match)
