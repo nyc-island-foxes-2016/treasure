@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+
   def new
     @user = User.new
     if request.xhr?

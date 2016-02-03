@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  # before_action for ownership
   def show
     @user = User.find(params[:id])
     if @user && @user == current_user

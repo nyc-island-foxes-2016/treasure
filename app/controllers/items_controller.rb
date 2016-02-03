@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :require_current_user, only: [:new, :available_items_show]
+  #before_action for ownership
 
   def new
     @item = Item.new
