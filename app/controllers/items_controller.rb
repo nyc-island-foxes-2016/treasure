@@ -39,7 +39,11 @@ class ItemsController < ApplicationController
           render json:{message: "No More Items"}
         end
       else
-        @item
+        if available_items.any?
+          @item
+        else
+          render "items/_out_of_swipes"
+        end
       end
     else
       redirect_to login_path

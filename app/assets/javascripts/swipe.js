@@ -6,6 +6,9 @@ $(document).ready(function(){
   var currentObject;
   var matchResponse;
 
+  const NEXT_LEFT_SWIPE_ID = $(".swipe-action input")[3];
+  const NEXT_RIGHT_SWIPE_ID = $(".swipe-action input")[8];
+
 // Handle left or right swipes via clicking the respective buttons
     $(".swipe-action").on("submit", function(event) {
       event.preventDefault();
@@ -23,8 +26,8 @@ $(document).ready(function(){
           dataType: "JSON"
         }).done(function(secondResponse){
             nextItemObject = secondResponse;
-            $(".swipe-action input")[3].value = nextItemObject.id;
-            $(".swipe-action input")[8].value = nextItemObject.id;
+            NEXT_LEFT_SWIPE_ID.value = nextItemObject.id;
+            NEXT_RIGHT_SWIPE_ID.value = nextItemObject.id;
         }).then(function(event) {
           if (matchResponse.match){
             currentItemName = $("#item-container h3").html()
@@ -50,7 +53,7 @@ $(document).ready(function(){
                   });
             }
           } else {
-            $('.available-items-container').html("No more swipes! Come back later.");
+            $('.available-items-container').html("<p>You're out of swipes. Check back soon!</p>");
           }
         });
       });
@@ -72,8 +75,8 @@ $(document).ready(function(){
             dataType: "JSON"
           }).done(function(secondResponse){
             nextItemObject = secondResponse;
-            $(".swipe-action input")[3].value = nextItemObject.id;
-            $(".swipe-action input")[8].value = nextItemObject.id;
+            NEXT_LEFT_SWIPE_ID.value = nextItemObject.id;
+            NEXT_RIGHT_SWIPE_ID.value = nextItemObject.id;
           }).then(function(event) {
             if (nextItemObject.message != "No More Items") {
               $( "#item-container" ).animate({ marginRight: "15em", opacity: 0 },
@@ -84,7 +87,7 @@ $(document).ready(function(){
                   }
                 });
             } else {
-              $('.available-items-container').html("No more swipes! Come back later.");
+              $('.available-items-container').html("<p>You're out of swipes. Check back soon!</p>");
             }
           });
         });
@@ -101,8 +104,8 @@ $(document).ready(function(){
             dataType: "JSON"
           }).done(function(response){
             nextItemObject = response;
-            $(".swipe-action input")[3].value = nextItemObject.id;
-            $(".swipe-action input")[8].value = nextItemObject.id;
+            NEXT_LEFT_SWIPE_ID.value = nextItemObject.id;
+            NEXT_RIGHT_SWIPE_ID.value = nextItemObject.id;
           }).then(function(event) {
             if (matchResponse.match){
               currentItemName = $("#item-container h3").html()
@@ -118,7 +121,7 @@ $(document).ready(function(){
                   }
                 });
             } else {
-              $('.available-items-container').html("No more swipes! Come back later.");
+              $('.available-items-container').html("<p>You're out of swipes. Check back soon!</p>");
             }
           });
         });
