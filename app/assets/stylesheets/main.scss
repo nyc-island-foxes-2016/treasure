@@ -64,7 +64,6 @@
 
 .panel {
   margin: 0 auto;
-  margin-top: 2em;
   border: 1px solid #777777;
   width: 300px;
 
@@ -104,4 +103,17 @@ display: none;
     /* To center vertically */
     display: table-cell;
     vertical-align: middle;
+}
+.item-display{
+  border: 0;
+}
+.btn-xlarge {
+    margin-top: 5px;
+    padding: 18px 70px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    font-size: 25px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
 }
