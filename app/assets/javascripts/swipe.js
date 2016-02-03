@@ -104,6 +104,11 @@ $(document).ready(function(){
             $(".swipe-action input")[3].value = nextItemObject.id;
             $(".swipe-action input")[8].value = nextItemObject.id;
           }).then(function(event) {
+            if (matchResponse.match){
+              currentItemName = $("#item-container h3").html()
+              updateMatchModal(currentItemName)
+              $('#myModal').modal({show: true})
+            }
             if (nextItemObject.message != "No More Items") {
               $( "#item-container" ).animate({ marginLeft: "15em", opacity: 0 },
                     { duration: 400,
@@ -114,11 +119,6 @@ $(document).ready(function(){
                 });
             } else {
               $('.available-items-container').html("No more swipes! Come back later.");
-            }
-            if (matchResponse.match){
-              currentItemName = $("#item-container h3").html()
-              updateMatchModal(currentItemName)
-              $('#myModal').modal({show: true})
             }
           });
         });
