@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
     if @item && @item.user == current_user
       @matches = @item.all_matches
-      @has_matches = !@matches.empty?
+      @has_matches = @matches.any?
     else
       render :file => "#{Rails.root}/public/404.html", :status => 404
     end
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
       available_items = Item.available(current_user)
       @item = available_items.shuffle.sample
       if request.xhr?
-        if !available_items.empty?
+        if available_items.any?
           render json: @item
         else
           render json:{message: "No More Items"}
