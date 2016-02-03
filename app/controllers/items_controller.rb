@@ -54,10 +54,10 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find_by(id: params[:id])
-    @match = Match.find(params[:match])
 
     if params[:item][:swapped]
       if @item.swapped == false
+        @match = Match.find(params[:match])
         @item.update_attributes(swapped: true)
         @match.make_swap_if_mutual_swap(@item)
         if @match.swapped_at != nil
