@@ -6,7 +6,7 @@
       <%= f.hidden_field :direction, value: "L" %>
       <%= f.hidden_field :other_item_id, value: @item.id %>
       <%= f.submit "swipe left", class: "sr-only" %>
-      <%= f.button class: 'btn btn-danger btn-lg', name:"commit" do %>
+      <%= f.button class: 'btn btn-default btn-lg', name:"commit" do %>
         <i class="fa fa-close"></i>
       <% end %>
     <% end %>
@@ -15,7 +15,7 @@
       <%= f.hidden_field :direction, value: "R" %>
       <%= f.hidden_field :other_item_id, value: @item.id %>
       <%= f.submit "swipe right", class: "sr-only" %>
-      <%= f.button class: 'btn btn-success btn-lg', name:"commit" do %>
+      <%= f.button class: 'btn btn-default btn-lg', name:"commit" do %>
         <i class="fa fa-check"></i>
       <% end %>
     <% end %>
