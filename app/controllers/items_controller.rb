@@ -55,6 +55,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find_by(id: params[:id])
     @match = Match.find(params[:match])
+
     if params[:item][:swapped]
       if @item.swapped == false
         @item.update_attributes(swapped: true)
@@ -66,6 +67,7 @@ class ItemsController < ApplicationController
         end
       end
       redirect_to item_match_path(@item, @match)
+
     else
       if @item.update_attributes(item_params)
         flash[:notice] = "Item updated"

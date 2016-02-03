@@ -57,6 +57,13 @@
     </div>
   </div>
 
+<% if @my_item.swapped and @other_item.swapped %>
+<!-- render "Objects officially swapped" -->
+<% elsif @my_item.swapped %>
+<!-- render  -->
+
+
+
   <div class="col-sm-6 col-md-4" id="swap-button">
     <%= form_for @my_item do |f| %>
       <%= f.hidden_field :swapped %>
