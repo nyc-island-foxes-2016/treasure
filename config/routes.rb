@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
 
 
-  resources :items, only: [:index, :new, :create, :show, :edit, :update] do
+  resources :items, only: [:new, :create, :show, :edit, :update] do
     resources :matches, only: [:index, :show] do
       resources :messages, only: [:new, :create]
     end
