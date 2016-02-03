@@ -57,18 +57,18 @@
     </div>
   </div>
 
-<% if @my_item.swapped and @other_item.swapped %>
-<!-- render "Objects officially swapped" -->
-<% elsif @my_item.swapped %>
-<!-- render  -->
-
-
-
   <div class="col-sm-6 col-md-4" id="swap-button">
+    <h4>Item Status</h4>
+    <% if @my_item.swapped and @other_item.swapped  %>
+      <p>Your item is officially swapped!</p>
+    <% elsif @my_item.swapped %>
+      <p>You have initiated a swap for this item.</p>
+    <%else %>
     <%= form_for @my_item do |f| %>
       <%= f.hidden_field :swapped %>
       <%= hidden_field_tag "match", @match.id %>
-      <%= f.submit "Swap!", class: "btn btn-lg btn-primary btn-xlarge" %>
+      <%= f.submit "Mark as swapped", class: "btn btn-lg btn-primary btn-xlarge" %>
     <% end %>
+ <% end %>
   </div>
 </div>

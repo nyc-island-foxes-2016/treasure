@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
         if @match.swapped_at != nil
           flash[:notice] = "Both treasures have confirmed your swap!"
         else
-          flash[:notice] = "You've initiated a swap. Waiting for the other treasure to confirm."
+          flash[:notice] = 'When <%= @match.other_item.name %> confirms, your items will be unlisted.'
         end
       end
       redirect_to item_match_path(@item, @match)
