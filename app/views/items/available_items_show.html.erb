@@ -1,6 +1,4 @@
 <div class='available-items-container'>
-
-
   <% if @item %>
     <%= render partial: "swipe_item", locals: {item: @item} %>
 
@@ -11,10 +9,7 @@
       <%= f.button class: 'btn btn-danger btn-lg', name:"commit" do %>
         <i class="fa fa-close"></i>
       <% end %>
-
-
     <% end %>
-
 
     <%= form_for @swipe, html: {class: 'swipe-action', id: 'swipe-right'} do |f| %>
       <%= f.hidden_field :direction, value: "R" %>
@@ -23,19 +18,12 @@
       <%= f.button class: 'btn btn-success btn-lg', name:"commit" do %>
         <i class="fa fa-check"></i>
       <% end %>
-
-
-    <% end %>
-
-  <% else %>
-
-    <% if flash[:notice] %>
-      <p><%= flash[:notice] %></p>
     <% end %>
 
   <% end %>
 </div>
 
+<!-- MODAL CODE BELOW -->
 <div class="modal fade center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
