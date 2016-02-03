@@ -26,7 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use paperclip for image management
 gem "paperclip"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem "omniauth-facebook"
 
