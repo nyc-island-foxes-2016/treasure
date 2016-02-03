@@ -1,8 +1,6 @@
 <div>
   <% if @user.avatar %>
-    <div>
-      <img class="img-circle" src="<%= @user.avatar_file_name %>" alt="<%= @user.name %> profile picture" width="140" height="140">
-    </div>
+    <%= image_tag @user.avatar.url(:medium), class: "img-circle" %>
   <% end %>
   <h2><%= @user.name %></h2>
   <p> <%= link_to "Edit my profile", edit_user_path %></p>
