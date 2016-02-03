@@ -53,7 +53,7 @@ $(document).ready(function(){
                   });
             }
           } else {
-            $('.available-items-container').html("No more swipes! Come back later.");
+            $('.available-items-container').html("<p>You're out of swipes. Check back soon!</p>");
           }
         });
       });
@@ -87,7 +87,7 @@ $(document).ready(function(){
                   }
                 });
             } else {
-              $('.available-items-container').html("No more swipes! Come back later.");
+              $('.available-items-container').html("<p>You're out of swipes. Check back soon!</p>");
             }
           });
         });
@@ -121,7 +121,7 @@ $(document).ready(function(){
                   }
                 });
             } else {
-              $('.available-items-container').html("No more swipes! Come back later.");
+              $('.available-items-container').html("<p>You're out of swipes. Check back soon!</p>");
             }
           });
         });
