@@ -60,13 +60,18 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find_by(id: params[:id])
     if params[:item][:swapped]
-      @item.update_attributes(swapped: true)
-      @match = Match.find(params[:match])
-      @match.make_swap_if_mutual_swap(@item)
-      if @match.swapped_at != nil
-        flash[:notice] = "You swapped your treasure!"
+      binding.pry
+      if @item.swapped == false
+        @item.update_attributes(swapped: true)
+        @match = Match.find(params[:match])
+        @match.make_swap_if_mutual_swap(@item)
+        if @match.swapped_at != nil
+          flash[:notice] = "Both treasures have confirmed your swap!"
+        else
+          flash[:notice] = "You've initiated a swap. Waiting for the other treasure to confirm."
+        end
+        redirect_to item_match_path(@item, @match)
       end
-      redirect_to item_match_path(@item, @match)
     else
       if @item.update_attributes(item_params)
         flash[:notice] = "Item updated"
