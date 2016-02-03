@@ -7,15 +7,13 @@ class User < ActiveRecord::Base
 
   # Paperclip code
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "150x150>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_many :items
   has_many :given_swipes, through: :items
   has_many :received_swipes, through: :items
   has_many :messages
-
-  before_save :add_default_image
 
   def self.create_or_get_from_oauth(hash)
     existing = User.find_by(provider: hash[:provider], uid: hash[:uid])
