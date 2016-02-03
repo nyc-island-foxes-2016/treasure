@@ -37,7 +37,6 @@ class UsersController < ApplicationController
       flash[:notice] = "Profile updated"
       redirect_to @user
     else
-      flash[:alert] = "Did not update"
       render :edit
     end
   end
