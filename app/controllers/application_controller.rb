@@ -9,4 +9,13 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  private
+
+  def require_current_user
+    unless current_user
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to root_path
+    end
+  end
+
 end

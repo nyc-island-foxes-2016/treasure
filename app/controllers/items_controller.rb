@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-  end
+  before_action :require_current_user
 
   def new
     @item = Item.new
