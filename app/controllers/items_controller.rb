@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
       @matches = @item.all_matches
       @has_matches = @matches.any?
       @swapped_match = @item.swapped_matches
-      @other_swapped_item = @swapped_match.other(@item).name
+      @other_swapped_item = @swapped_match.other(@item).name if @swapped_match
     else
       render :file => "#{Rails.root}/public/404.html", :status => 404
     end
@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
         if @match.swapped_at != nil
           flash[:notice] = "Both treasures have confirmed your swap!"
         else
-          flash[:notice] = 'When <%= @match.other_item.name %> confirms, your items will be unlisted.'
+          flash[:notice] = 'When the other item in your match confirms, your items will be unlisted.'
         end
       end
       redirect_to item_match_path(@item, @match)
