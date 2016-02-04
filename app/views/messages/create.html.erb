@@ -3,25 +3,45 @@
     <% if current_user.name == message.user.name %>
       <div class="chat-body clearfix">
         <div class="header">
-          <strong class="primary-font"><%= message.user.name %></strong>
-            <small class="text-muted">
-              <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
-            </small>
+
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag message.user.avatar.url(:medium), class: "img-circle" %>
+            </div>
+            <div class="media-body">
+              <strong class="primary-font"><%= message.user.name %></strong>
+              <small class="text-muted">
+                <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
+              </small>
+              <p class="pull-left"><%= message.content %></p>
+            </div>
+          </div>
+
+
+
         </div>
-        <p class="pull-left"><%= message.content %></p>
       </div>
-    <% else %>
-    <div class="chat-body clearfix">
-      <div class="header">
-        <strong class="primary-font"><%= message.user.name %></strong>
-          <small class=" text-muted">
-            <span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %>
-          </small>
+      <% else %>
+      <div class="chat-body clearfix">
+        <div class="header">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag message.user.avatar.url(:medium), class: "img-circle" %>
+            </div>
+
+            <div class="media-body">
+              <h5><strong class="primary-font"><%= message.user.name %></strong></h5>
+              <small class="text-muted">
+              <p class="pull-left"><%= message.content %></p>
+              <p><span class="glyphicon glyphicon-time"></span>sent at <%= std_format_date(message.created_at) %></p>
+              </small>
+              
+            </div>
+          </div>
+
       </div>
-      <p class="pull-left"><%= message.content %></p>
     </div>
-  </li>
+    <% end %>
   <% end %>
-<% end %>
 
 
