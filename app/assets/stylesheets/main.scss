@@ -3,7 +3,7 @@ $linkhover: rgba(0,128,128, 0.7);
 
 #main-body {
   background-color: #F5F5F5;
-  padding: 1em;
+  padding: 2em;
   text-align: center;
   font-family: 'Roboto', sans-serif;
 }
@@ -151,9 +151,51 @@ display: none;
        -moz-border-radius: 8px;
             border-radius: 8px;
 }
-
 @media (min-width: 1200px) {
     .container{
         max-width: 800px;
     }
+}
+.details {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px dashed #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+.row {
+  margin-top: 5px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 900;
+    color: #333;
+    display: block;
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    line-height: 1.1;
+}
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background: #1c1c1c;
+    font-size: 14px;
+    color: #bfbfbf;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    width: 100%;
+    transform-style: preserve-3d;
+    transform: perspective(800px);
+    bottom: 0;
+    -webkit-transition: all 400ms cubic-bezier(0.86, 0, 0.07, 1);
+    transition: all 400ms cubic-bezier(0.86, 0, 0.07, 1);
 }
