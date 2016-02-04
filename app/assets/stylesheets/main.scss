@@ -2,11 +2,17 @@
   background-color: #F5F5F5;
   padding: 1em;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 
 .thumbnail {
   background-color: #F5F5F5;
   border: none;
   border-radius: 0;
+}
+
+.nav, li {
+  font-family: Roboto;
+  font-weight: 300;
 }
 
 .left {
@@ -30,7 +36,8 @@
 .navbar-default .navbar-brand {
   color: black;
   font-family: 'Patua One', cursive;
-  font-size: 2em;
+  font-size: 3em;
+  padding: .3em 0 1em .5em;
 }
 
 .alert {
