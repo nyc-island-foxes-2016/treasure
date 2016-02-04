@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
     @item = available_items.shuffle.sample
     if request.xhr?
       if available_items.any?
-        render json: @item
+        render json: @item, methods: [:avatar_url]
       else
         render json:{message: "No More Items"}
       end

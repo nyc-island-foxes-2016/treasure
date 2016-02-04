@@ -27,6 +27,10 @@ class Item < ActiveRecord::Base
     availables.reject{|item| item.swapped }
   end
 
+  def avatar_url
+    avatar.url(:medium)
+  end
+
   def add_default_image
     self.avatar_file_name = 'https://placehold.it/300.png/09f/fff'
   end
