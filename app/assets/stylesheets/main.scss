@@ -1,8 +1,19 @@
+$green1: #007F61;
+$green2: #4CFFD4;
+$green3: #00FFC1;
+$green4: #0F7F64;
+$green5: #00CC9B;
+
+$logo: $green4;
+$linkcolor: $green4;
+$linkhover: $green3;
+
 #main-body {
   background-color: #F5F5F5;
   padding: 1em;
   text-align: center;
   font-family: 'Roboto', sans-serif;
+}
 
 .thumbnail {
   background-color: #F5F5F5;
@@ -10,8 +21,20 @@
   border-radius: 0;
 }
 
+a {
+  color: $linkcolor;
+    &:hover {
+  color: $linkhover;
+  }
+
+.btn {
+  a {
+  color: #fff;
+  }
+}
+
 .nav, li {
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-weight: 300;
 }
 
@@ -35,6 +58,8 @@
 
 .navbar-default .navbar-brand {
   color: black;
+    &:hover {
+    }
   font-family: 'Patua One', cursive;
   font-size: 3em;
   padding: .3em 0 1em .5em;
@@ -47,8 +72,10 @@
 .notice {
   color: green;
 }
-.navbar-brand, .navbar-default {
-  color: black;
+
+.navbar-default .navbar-nav > li > a {
+  font-family: Roboto;
+  font-weight: 300;
 }
 
 .btn-group {
@@ -129,4 +156,10 @@ display: none;
     -webkit-border-radius: 8px;
        -moz-border-radius: 8px;
             border-radius: 8px;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 800px;
+    }
 }
