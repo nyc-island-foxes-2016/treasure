@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
     if @item && @item.user == current_user
       @matches = @item.all_matches
       @has_matches = @matches.any?
+      @swapped_match = @item.swapped_matches
+      @other_swapped_item = @swapped_match.other(@item).name
     else
       render :file => "#{Rails.root}/public/404.html", :status => 404
     end

@@ -24,11 +24,15 @@ class Item < ActiveRecord::Base
      " (       select s.other_item_id from swipes s join items i on i.id = s.my_item_id " +
      "  where i.user_id = ? ) "
     availables = where(where_clause, user.id, user.id)
-    # availables.reject{|item| item.swapped }
+    availables.reject{|item| item.swapped }
   end
 
   def add_default_image
     self.avatar_file_name = 'https://placehold.it/300.png/09f/fff'
+  end
+
+  def swapped_matches
+    self.all_matches.detect { |match| match.swapped_at != nil }
   end
 
 end
