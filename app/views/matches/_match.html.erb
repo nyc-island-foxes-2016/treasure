@@ -6,4 +6,7 @@
       <p><%= match.other(@item).description %></p>
     </div>
   </div>
+  <div class="details">
+        <i class="fa fa-comment-o"><%= link_to match.messages.count, item_match_path(@item, match) %></i>
+  </div>
 </div>
