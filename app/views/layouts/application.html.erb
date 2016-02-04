@@ -36,16 +36,10 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to 'My Treasure', item_path(current_user.items.first) %> </li>
-                  <li><%= link_to "Settings", current_user %></li>
-                  <li role="separator" class="divider"></li>
-                  <li><%= link_to 'Logout', session_path(current_user), method: :delete %> </li>
-                </ul>
-              </li>
+            <li><a class="username"></a></li>
+            <li><%= link_to current_user.name, current_user %></li>
+            <li><%= link_to 'My Treasure', item_path(current_user.items.first) %> </li>
+            <li><%= link_to 'Logout', session_path(current_user), method: :delete %> </li>
             </ul>
             <% end %>
           </div><!--/.nav-collapse -->
@@ -55,11 +49,11 @@
 
     <div class="flash">
       <% if flash[:notice] %>
-        <p><%= flash[:notice] %></p>
+        <p class="notice"><%= flash[:notice] %></p>
       <% end %>
 
       <% if flash[:alert] %>
-        <p><%= flash[:alert] %></p>
+        <p class="alert"><%= flash[:alert] %></p>
       <% end %>
     </div>
 
