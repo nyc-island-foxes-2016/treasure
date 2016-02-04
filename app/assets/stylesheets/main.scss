@@ -1,12 +1,5 @@
-$green1: #007F61;
-$green2: #4CFFD4;
-$green3: #00FFC1;
-$green4: #0F7F64;
-$green5: #00CC9B;
-
-$logo: $green4;
-$linkcolor: $green4;
-$linkhover: $green3;
+$linkcolor: rgb(0,128,128);
+$linkhover: rgba(0,128,128, 0.7);
 
 #main-body {
   background-color: #F5F5F5;
@@ -25,6 +18,7 @@ a {
   color: $linkcolor;
     &:hover {
   color: $linkhover;
+  text-decoration: none;
   }
 
 .btn {

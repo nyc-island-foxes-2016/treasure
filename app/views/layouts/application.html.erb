@@ -36,9 +36,9 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-            <li><a class="username"><%= current_user.name %></a></li>
+            <li><a class="username"></a></li>
+            <li><%= link_to current_user.name, current_user %></li>
             <li><%= link_to 'My Treasure', item_path(current_user.items.first) %> </li>
-            <li><%= link_to "Settings", current_user %></li>
             <li><%= link_to 'Logout', session_path(current_user), method: :delete %> </li>
             </ul>
             <% end %>
