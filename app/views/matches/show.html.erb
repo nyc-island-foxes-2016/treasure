@@ -3,7 +3,7 @@
   <div class="col-sm-6 col-md-4 item-display" >
     <div class="thumbnail">
       <% if @other_item.avatar %>
-        <img src="<%= @other_item.avatar_file_name %>" alt="<%= @other_item.name %>">
+      <%= image_tag @other_item.avatar.url(:medium) %>
       <% end %>
       <div class="caption">
         <h3><%= @other_item.name %></h3>
@@ -21,6 +21,10 @@
           <% @match.messages.each do |message| %>
           <% if current_user.name == message.user.name %>
           <div class="chat-body clearfix">
+            <!-- CAROLINA: MAKE THIS WORK -->
+<!--             <div class="thumbnail">
+              <%= image_tag message.user.avatar.url(:thumb), class: "img-circle", width: "50" %>
+            </div> -->
             <div class="header">
               <strong class="primary-font"><%= message.user.name %></strong>
               <small class="text-muted">
