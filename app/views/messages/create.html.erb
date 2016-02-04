@@ -1,12 +1,13 @@
 <div class="chat" id="chat">
-  <% @all_messages.each do |message| %>
+  <% @match.messages.each do |message| %>
+
     <% if current_user.name == message.user.name %>
       <div class="chat-body clearfix">
         <div class="header">
 
           <div class="media">
             <div class="media-left">
-              <%= image_tag message.user.avatar.url(:medium), class: "img-circle" %>
+              <%= image_tag @mypic, class: "img-circle" %>
             </div>
             <div class="media-body">
               <strong class="primary-font"><%= message.user.name %></strong>
