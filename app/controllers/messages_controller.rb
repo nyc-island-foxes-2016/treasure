@@ -1,7 +1,8 @@
 class MessagesController < ApplicationController
 
   def for_match
-    @match = Match.find_by(id: params[:match_id])
+    @match = Match.includes(:messages).find(params[:match_id])
+    @mypic = current_user.avatar.url(:medium)
     @all_messages = @match.messages
     render :create, layout: false
   end
