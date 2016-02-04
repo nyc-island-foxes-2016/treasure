@@ -29,7 +29,7 @@ $(document).ready(function() {
   }
 
   if ($('#chat-sm').length) {
-    setInterval(loadMessages, 5000);
+    setInterval(loadMessages, 7000);
   }
 
 
