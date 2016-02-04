@@ -2,7 +2,7 @@ $linkcolor: rgb(0,128,128);
 $linkhover: rgba(0,128,128, 0.7);
 
 #main-body {
-  background-color: #F5F5F5;
+  background-color: #ededed;
   padding: 1em;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -50,6 +50,10 @@ a {
   display: inline;
 }
 
+.navbar-default {
+  background-color: #ededed;
+  
+}
 .navbar-default .navbar-brand {
   color: black;
     &:hover {
