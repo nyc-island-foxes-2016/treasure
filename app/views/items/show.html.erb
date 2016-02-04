@@ -1,5 +1,8 @@
 <div>
     <%= render @item %>
+
+    <p>You've traded with <%= @other_swapped_item %>.</p>
+
     <% if @has_matches %>
       <%= render 'matches_list' %>
     <% end %>
