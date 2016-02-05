@@ -4,6 +4,10 @@
     <div class="caption">
       <h3><%= link_to match.other(@item).name, item_match_path(@item, match) %></h3>
       <p><%= match.other(@item).description %></p>
+  <div class= "details">
+    <i class="fa fa-comment-o"> <%= link_to match.messages.count, item_match_path(@item, match)%> </i>
+  </div>
     </div>
   </div>
+
 </div>
